@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>"Transformers</title>
+    <style>
+        /* Apply general styles to the body */
+        body {
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Ensure all images are responsive and fit within the container */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+        /* Apply some margin to paragraphs for readability */
+        p {
+            margin: 20px 0;
+        }
+
+        /* Ensure headers have some spacing */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Style links for better visibility */
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for pre and code elements to prevent horizontal scrolling */
+        pre {
+            white-space: pre-wrap;
+            /* Allows the content to wrap and prevents horizontal scrolling */
+            word-wrap: break-word;
+            /* Breaks long words to fit within the container */
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            /* Add scrollbars only if necessary */
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+        <h1>Transformers: Unraveling the Architecture Shaping AI's Future</h1>
+<p>Transformers have revolutionized the field of natural language processing by introducing a novel architecture that excels in understanding context. This article delves into the intricacies of transformers, exploring how they process data and why they are pivotal in AI advancements.</p>
+<h4>Table of Contents</h4>
+<ul>
+<li><a href="#understanding-the-transformer-architecture">Understanding the Transformer Architecture</a>  </li>
+<li><a href="#the-initial-layers-of-the-network">The Initial Layers of the Network</a>  </li>
+<li><a href="#token-representation">Token Representation</a>  </li>
+<li><a href="#the-attention-mechanism">The Attention Mechanism</a>  </li>
+<li><a href="#contextual-word-meanings">Contextual Word Meanings</a>  </li>
+<li><a href="#the-multi-layer-perceptron-blocks">The Multi-Layer Perceptron (MLP) Blocks</a>  </li>
+<li><a href="#the-interplay-of-matrices">The Interplay of Matrices</a>  </li>
+<li><a href="#normalization-and-repetition-of-blocks">Normalization and Repetition of Blocks</a>  </li>
+<li><a href="#final-vector-and-prediction-distribution">Final Vector and Prediction Distribution</a>  </li>
+<li><a href="#generating-text">Generating Text</a>  </li>
+<li><a href="#example-of-text-generation">Example of Text Generation</a>  </li>
+<li><a href="#background-knowledge-important-for-transformers">Background Knowledge Important for Transformers</a>  </li>
+<li><a href="#next-steps">Next Steps</a>  </li>
+<li><a href="#the-premise-of-deep-learning">The Premise of Deep Learning</a>  </li>
+<li><a href="#foundational-models-in-deep-learning">Foundational Models in Deep Learning</a>  </li>
+<li><a href="#from-linear-regression-to-deep-learning">From Linear Regression to Deep Learning</a>  </li>
+<li><a href="#the-structure-of-deep-learning-models">The Structure of Deep Learning Models</a>  </li>
+<li><a href="#training-deep-learning-models">Training Deep Learning Models</a>  </li>
+<li><a href="#representation-as-matrix-operations">Representation as Matrix Operations</a>  </li>
+<li><a href="#breaking-down-gpt-3-architecture">Breaking Down GPT-3's Architecture</a>  </li>
+<li><a href="#understanding-gpt-3-matrices">Understanding GPT-3's Matrices</a>  </li>
+<li><a href="#the-role-of-data-in-deep-learning">The Role of Data in Deep Learning</a>  </li>
+<li><a href="#tokenization-and-embedding">Tokenization and Embedding</a>  </li>
+<li><a href="#the-vocabulary-of-a-language-model">The Vocabulary of a Language Model</a>  </li>
+<li><a href="#embedding-words-into-vectors">Embedding Words into Vectors</a>  </li>
+<li><a href="#semantic-meaning-in-high-dimensional-space">Semantic Meaning in High-Dimensional Space</a>  </li>
+<li><a href="#visualizing-word-embeddings">Visualizing Word Embeddings</a>  </li>
+<li><a href="#illustrating-semantic-relationships">Illustrating Semantic Relationships</a>  </li>
+<li><a href="#exploring-word-analogies">Exploring Word Analogies</a>  </li>
+<li><a href="#final-prediction-step">The Final Prediction Step</a>  </li>
+<li><a href="#understanding-softmax">Understanding Softmax</a>  </li>
+<li><a href="#temperature-softmax">Temperature in Softmax</a>  </li>
+<li><a href="#probabilities-logits">Exploring Probabilities and Logits</a>  </li>
+<li><a href="#deep-learning-structure">Deep Learning Structure</a></li>
+</ul>
+<p>Transformers have become a cornerstone technology in natural language processing, thanks to their ability to handle sequences of data in a parallel manner and their superior understanding of context. The groundbreaking paper "Attention Is All You Need" by Vaswani et al. laid the foundation for the transformer architecture and revolutionized the way we work with language models.</p>
+<p><img alt="Attention Is All You Need" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/80_2KGJ0fRsN.jpeg" /></p>
+<h2 id="understanding-the-transformer-architecture">Understanding the Transformer Architecture<a class="anchor" id="understanding-the-transformer-architecture"></a></h2>
+<h3 id="the-initial-layers-of-the-network">The Initial Layers of the Network<a class="anchor" id="the-initial-layers-of-the-network"></a></h3>
+<p>At the very beginning of the transformer network, the input data, whether text, images, or audio, is broken down into tokens. These tokens are not just words or characters; they can be parts of words or even subword units in text, patches of an image, or segments of sound. The tokenization process is crucial because it determines how the input is represented and processed through the network.</p>
+<h4 id="token-representation">Token Representation<a class="anchor" id="token-representation"></a></h4>
+<p>Once we have our tokens, each one is then mapped to a high-dimensional vector. These vectors are the language that the transformer speaks. They are where the semantic meaning of the tokens is stored, and they allow the transformer to understand and manipulate the input data. </p>
+<h3 id="the-attention-mechanism">The Attention Mechanism<a class="anchor" id="the-attention-mechanism"></a></h3>
+<p>The sequence of vectors representing our tokens then flows into what's known as the attention block. Here's where the magic happens. The attention mechanism allows each vector to interact with others, effectively letting the tokens communicate and share information. This communication is key to understanding context and is what enables the transformer to differentiate between "bank" as a financial institution and "bank" as the side of a river, based solely on the surrounding words.</p>
+<h4 id="contextual-word-meanings">Contextual Word Meanings<a class="anchor" id="contextual-word-meanings"></a></h4>
+<p>For example, consider the sentence "I arrived at the bank after crossing the river." The meaning of "bank" here is quite different from its meaning in "I need to go to the bank to withdraw money." It is the attention mechanism's job to figure out these differences based on the context provided by the other words in the sentence.</p>
+<h3 id="the-multi-layer-perceptron-blocks">The Multi-Layer Perceptron (MLP) Blocks<a class="anchor" id="the-multi-layer-perceptron-blocks"></a></h3>
+<p>After the attention block, the vectors pass through what is either called a multi-layer perceptron or a feed-forward layer. Unlike in the attention block, in the MLP block, the vectors are processed individually, in parallel. This part of the transformer can be seen as a series of questions asked about each vector, and the answers lead to updates in their values.</p>
+<h3 id="the-interplay-of-matrices">The Interplay of Matrices<a class="anchor" id="the-interplay-of-matrices"></a></h3>
+<p>Both the attention blocks and the MLP blocks involve a lot of matrix multiplications. Understanding these matrices is crucial to grasp how the transformer network processes data.</p>
+<pre><code class="language-python"># Pseudo-code for a single attention block  
+def attention_block(query, key, value):  
+    # Compute the dot product between the query and key  
+    scores = dot_product(query, key)  
+    # Apply the softmax function to obtain the attention weights  
+    weights = softmax(scores)  
+    # Multiply the weights by the value to get the output  
+    output = dot_product(weights, value)  
+    return output  
+</code></pre>
+<h3 id="normalization-and-repetition-of-blocks">Normalization and Repetition of Blocks<a class="anchor" id="normalization-and-repetition-of-blocks"></a></h3>
+<p>Between the attention and MLP blocks, there are normalization steps that help stabilize the learning process. The network repeatedly alternates between attention and MLP blocks, refining the understanding of the input data with each pass.</p>
+<h3 id="final-vector-and-prediction-distribution">Final Vector and Prediction Distribution<a class="anchor" id="final-vector-and-prediction-distribution"></a></h3>
+<p>By the time data reaches the end of the network, the hope is that all the essential meaning has been distilled into the final vector. This vector then undergoes a transformation to produce a probability distribution over all possible next tokens.</p>
+<pre><code class="language-python"># Pseudo-code for computing the probability distribution of the next token  
+def predict_next_token(vector):  
+    # Transform the final vector into a score for each possible next token  
+    token_scores = transform_to_token_scores(vector)  
+    # Apply softmax to get a probability distribution  
+    token_probabilities = softmax(token_scores)  
+    return token_probabilities  
+</code></pre>
+<h3 id="generating-text">Generating Text<a class="anchor" id="generating-text"></a></h3>
+<p>With the ability to predict the next token in a sequence, you can generate text by sampling from the distribution and iteratively appending the new token to the input, creating a feedback loop that can produce coherent and contextually appropriate language.</p>
+<h4 id="example-of-text-generation">Example of Text Generation<a class="anchor" id="example-of-text-generation"></a></h4>
+<pre><code class="language-python">seed_text = &quot;The quick brown fox&quot;  
+generated_text = seed_text
+
+for _ in range(number_of_tokens_to_generate):  
+    # Predict the distribution for the next token  
+    next_token_distribution = predict_next_token(generated_text)  
+    # Sample from the distribution  
+    next_token = sample_from_distribution(next_token_distribution)  
+    # Append the sampled token to the generated text  
+    generated_text += next_token
+
+print(generated_text)  
+</code></pre>
+<h3 id="background-knowledge-important-for-transformers">Background Knowledge Important for Transformers<a class="anchor" id="background-knowledge-important-for-transformers"></a></h3>
+<p>For those interested in diving deeper into how transformers work, it's important to have a grasp of the following concepts:</p>
+<ul>
+<li><strong>Premise of Deep Learning</strong>: Understanding the basic principles behind learning representations from data.  </li>
+<li><strong>Word Embeddings</strong>: Familiarity with how words are mapped to vectors in high-dimensional space.  </li>
+<li><strong>Dot Products</strong>: The mathematical operation used to compare vectors and compute attention scores.  </li>
+<li><strong>Softmax Function</strong>: A crucial function that converts vectors of scores into a probability distribution.</li>
+</ul>
+<p>These foundational ideas are key to understanding the inner workings of transformer networks and how they process and generate language.</p>
+<p><img alt="Background Knowledge" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/405_rxPoJJIg3.jpeg" /></p>
+<h3 id="next-steps">Next Steps<a class="anchor" id="next-steps"></a></h3>
+<p>In the upcoming chapters, we will delve deeper into the attention mechanism and explore the intricacies of multi-layer perceptron blocks. We will also cover the training process and other details to provide a comprehensive understanding of transformers. If you're already familiar with the background concepts, feel free to skip ahead to the next chapter where we will focus on the attention blocks, the heart of the transformer.</p>
+<p><img alt="Next Steps" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/425_JLUpN7dvL.jpeg" /></p>
+<p>Stay tuned as we continue our exploration into transformers and learn how these powerful networks are shaping the future of AI.  </p>
+<h3 id="the-premise-of-deep-learning">The Premise of Deep Learning<a class="anchor" id="the-premise-of-deep-learning"></a></h3>
+<p>Deep learning is a subset of machine learning, which itself is a branch of artificial intelligence (AI) focused on algorithms and models that parse and learn from data. It's important to understand that deep learning models are defined by their parameters, weights that are adjusted during training to better approximate the desired output for a given input.</p>
+<p><img alt="Deep Learning Overview" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/435_uzoss5iH3.jpeg" /></p>
+<h4 id="foundational-models-in-deep-learning">Foundational Models in Deep Learning<a class="anchor" id="foundational-models-in-deep-learning"></a></h4>
+<p>Deep learning encompasses several types of neural networks:</p>
+<ul>
+<li><strong>Multilayer Perceptrons (MLPs)</strong>: These are the simplest form of neural networks, consisting of multiple layers of neurons, each connected to all the neurons in the next and previous layers.  </li>
+<li><strong>Convolutional Neural Networks (CNNs)</strong>: Primarily used in image recognition and processing, they are designed to automatically and adaptively learn spatial hierarchies of features.  </li>
+<li><strong>Transformers</strong>: A newer architecture that eschews recurrence and instead relies entirely on an attention mechanism to draw global dependencies between input and output.</li>
+</ul>
+<p>These models are just the tip of the iceberg in deep learning, which continues to expand and diversify as research progresses.</p>
+<h4 id="from-linear-regression-to-deep-learning">From Linear Regression to Deep Learning<a class="anchor" id="from-linear-regression-to-deep-learning"></a></h4>
+<p>The simplest form of machine learning, linear regression, involves finding the best linear relationship between input and output variables. However, this method is limited in its complexity and ability to handle real-world data. Deep learning, by contrast, can involve models like GPT-3, which has an astonishing 175 billion parameters, enabling it to capture and generate human-like text.</p>
+<h3 id="the-structure-of-deep-learning-models">The Structure of Deep Learning Models<a class="anchor" id="the-structure-of-deep-learning-models"></a></h3>
+<p>At the core of deep learning models is the need for structured input data. All inputs must be formatted as arrays of real numbers, which can be in the form of vectors (1D), matrices (2D), or higher-dimensional tensors.</p>
+<h4 id="training-deep-learning-models">Training Deep Learning Models<a class="anchor" id="training-deep-learning-models"></a></h4>
+<p>The training process involves adjusting the model's weights, which are the parameters of the model. These weights interact with the input data through operations like weighted sums and matrix multiplications, combined with non-linear functions known as activation functions.</p>
+<pre><code class="language-python"># Pseudo-code for a typical weighted sum operation in a neural network  
+def weighted_sum(inputs, weights):  
+    return sum(input * weight for input, weight in zip(inputs, weights))  
+</code></pre>
+<h4 id="representation-as-matrix-operations">Representation as Matrix Operations<a class="anchor" id="representation-as-matrix-operations"></a></h4>
+<p>In practice, these weighted sums are often represented as matrix operations, which are conceptually cleaner and more efficient for computation. For instance, the weights in GPT-3 are organized into tens of thousands of matrices, each serving different functions.</p>
+<p><img alt="Matrix Operations" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/645_CsNRe2zb5.jpeg" /></p>
+<h3 id="breaking-down-gpt-3-architecture">Breaking Down GPT-3's Architecture<a class="anchor" id="breaking-down-gpt-3-architecture"></a></h3>
+<p>Let's delve into GPT-3's structure to understand how deep learning models like these process language. GPT-3's 175 billion parameters are organized into 27,938 matrices that serve various functions such as embeddings, attention, and feed-forward operations.</p>
+<h4 id="understanding-gpt-3-matrices">Understanding GPT-3's Matrices<a class="anchor" id="understanding-gpt-3-matrices"></a></h4>
+<ul>
+<li><strong>Embedding Matrices</strong>: These are used to turn tokens into high-dimensional vectors. For example, the embedding matrix in GPT-3 has 12,288 dimensions for each token in its vocabulary of 50,257 tokens.</li>
+</ul>
+<pre><code class="language-markdown">#### Breakdown of GPT-3's Architecture  
+- Total weights: 175,181,291,520  
+- Organized into 27,938 matrices  
+- Embedding Matrix: 12,288 dimensions * 50,257 tokens = 617,558,016 weights  
+</code></pre>
+<ul>
+<li><strong>Key, Query, and Value Matrices</strong>: Used in the attention mechanism to determine the relevance of different parts of the input.  </li>
+<li><strong>Output, Up-projection, and Down-projection Matrices</strong>: These transform the data at various stages of the network.  </li>
+<li><strong>Unembedding Matrix</strong>: Transforms the final representation back into a form that can be interpreted as a probability distribution over the next token.</li>
+</ul>
+<p><img alt="GPT-3 Matrices" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/675_MTHpIU3dT.jpeg" /></p>
+<h3 id="the-role-of-data-in-deep-learning">The Role of Data in Deep Learning<a class="anchor" id="the-role-of-data-in-deep-learning"></a></h3>
+<p>In a deep learning model, the data being processed is distinct from the model's weights. The weights are the result of training and determine the model's responses to inputs, while the data represents the inputs themselves, such as an image to be classified or a text snippet to be processed.</p>
+<p><img alt="Data and Weights" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/725_LOSDKfPpG.jpeg" /></p>
+<h3 id="tokenization-and-embedding">Tokenization and Embedding<a class="anchor" id="tokenization-and-embedding"></a></h3>
+<p>Tokenization is the process of breaking down the input text into smaller pieces, or tokens, which could be words, parts of words, or punctuation. Each token is then turned into a high-dimensional vector through an embedding matrix.</p>
+<h4 id="the-vocabulary-of-a-language-model">The Vocabulary of a Language Model<a class="anchor" id="the-vocabulary-of-a-language-model"></a></h4>
+<p>A language model like GPT-3 has a predefined vocabulary, which can consist of around 50,000 words. The embedding matrix has a unique vector for each word in the vocabulary.</p>
+<pre><code class="language-markdown">#### Example Vocabulary Snippet  
+- aah  
+- aardvark  
+- aardwolf  
+- aargh  
+- ab  
+- ...  
+- zzz  
+</code></pre>
+<h4 id="embedding-words-into-vectors">Embedding Words into Vectors<a class="anchor" id="embedding-words-into-vectors"></a></h4>
+<p>The embedding matrix (labeled WE) initially has random values but is fine-tuned during training, allowing words to be represented as points in a high-dimensional space. This space is where the semantic meaning of words is captured.</p>
+<p><img alt="Word Embedding" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/795_J1F0W4PBv.jpeg" /></p>
+<h4 id="semantic-meaning-in-high-dimensional-space">Semantic Meaning in High-Dimensional Space<a class="anchor" id="semantic-meaning-in-high-dimensional-space"></a></h4>
+<p>In GPT-3's case, each word is embedded in a space of 12,288 dimensions. Directions in this space hold semantic meaning, allowing the model to determine the relationships and context of different words.</p>
+<p><img alt="Semantic Space" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/830_g-RJvqHSY.jpeg" /></p>
+<h3 id="visualizing-word-embeddings">Visualizing Word Embeddings<a class="anchor" id="visualizing-word-embeddings"></a></h3>
+<p>Although we cannot visualize high-dimensional spaces directly, we can project them onto lower dimensions to understand how words relate to each other. The model's training process results in embeddings where similar words are located closer together in this space. This proximity reflects a shared semantic meaning.</p>
+<h4 id="illustrating-semantic-relationships">Illustrating Semantic Relationships<a class="anchor" id="illustrating-semantic-relationships"></a></h4>
+<p>For example, words that are semantically related to "tower" will have embeddings that are close to the embedding of "tower". This reflects the model's learning of semantic relationships during training.</p>
+<p><img alt="Semantic Relationships" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/870_McVVxjx2T.jpeg" /></p>
+<h4 id="exploring-word-analogies">Exploring Word Analogies<a class="anchor" id="exploring-word-analogies"></a></h4>
+<p>A fascinating property of word embeddings is their ability to capture analogies. The classic example is the relationship between "man" and "woman", which parallels the relationship between "king" and "queen". Mathematically, this can be expressed as:</p>
+<pre><code class="language-python"># Python pseudo-code to illustrate word analogy  
+vector_man = word_embedding(&quot;man&quot;)  
+vector_woman = word_embedding(&quot;woman&quot;)  
+vector_king = word_embedding(&quot;king&quot;)
+
+# Finding the vector for &quot;queen&quot; based on the analogy  
+vector_queen_analogy = vector_king - vector_man + vector_woman  
+word_closest_to_queen = find_closest_word(vector_queen_analogy)  
+</code></pre>
+<p>This demonstrates how directions in the embedding space correspond to semantic changes in language.</p>
+<p><img alt="Word Analogies" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/905_jP1d6FLqy.jpeg" /></p>
+<p>The journey of understanding transformers and large language models takes us through an intricate landscape of high-dimensional spaces and complex parameters. As we continue, we'll explore how these models use their sophisticated structures to perform tasks such as language understanding, translation, and generation, shaping the evolution of AI.<br />
+The vectors we've discussed are not static entities; they are dynamic and change in meaning depending on context. This is evident when we consider analogies and relationships between words. For instance, even though the classic example of "king" and "queen" might suggest one type of relationship, the model's understanding is informed by a broader and more nuanced context.</p>
+<p><img alt="Semantic Analogies" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/930_8PH5TSyYR.jpeg" /></p>
+<p>It's interesting to note that the model's representation of "queen" is not simply a female counterpart to "king." Upon closer examination, we see that other factors influence the embedding. Family relations, for example, appear to offer a clearer illustration of the model's learning process.</p>
+<p><img alt="Family Relations Embedding" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/935_c6FzQexa1.jpeg" /></p>
+<p>This nuanced understanding of word relationships extends beyond simple gender roles or family terms. Indeed, the model's training leads to embeddings where one direction in the high-dimensional space encodes information about gender.</p>
+<p><img alt="Gender Encoding" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/955__UXQ9l-82.jpeg" /></p>
+<p>Historical and cultural contexts are also reflected in the embeddings. Take, for instance, the relationship between countries and their prominent World War II leaders. By performing simple arithmetic on the embeddings for "Italy," "Germany," "Hitler," and "Mussolini," we see that the model associates certain directions with nationality and others with historical figures.</p>
+<p><img alt="Historical Embeddings" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/960_EtYvhVYxY.jpeg" /></p>
+<p>Even food items are not exempt from this relational mapping. If we subtract the embedding of "Germany" from that of "Japan" and add it to "sushi," we amusingly end up close to "bratwurst."</p>
+<p><img alt="Cultural Food Analogies" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/990_PoQjB2JOw.jpeg" /></p>
+<p>These examples highlight the importance of the dot product in understanding vector alignment. Mathematically, the dot product involves multiplying corresponding components of two vectors and adding the results, which aligns well with the kinds of computations a neural network performs.</p>
+<pre><code class="language-markdown">#### Dot Product Computation  
+```python  
+def dot_product(vector_a, vector_b):  
+    return sum(a * b for a, b in zip(vector_a, vector_b))  
+</code></pre>
+<p>Geometrically, a positive dot product indicates similar directions, zero for perpendicular vectors, and negative when vectors point in opposite directions.  </p>
+<pre><code>
+![Dot Product](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1000_fn8WJhSK-.jpeg)
+
+Consider the hypothesis that the embedding difference between &quot;cats&quot; and &quot;cat&quot; might represent a &quot;plurality&quot; direction. To test this, compute the dot product of this vector against the embeddings of singular nouns and compare them to their plural counterparts.
+
+![Plurality Direction](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1035_QuCFJObDA.jpeg)
+
+This hypothesis is confirmed when we see that plural nouns indeed have a higher dot product with this &quot;plurality&quot; vector, indicating stronger alignment with the concept of plurality.
+
+![Testing Plurality](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1075_eCTWpMfkH.jpeg)
+
+The embedding matrix is the first significant collection of weights in our model. With a vocabulary size of 50,257 and an embedding dimension of 12,288, this amounts to approximately 617 million weights.
+
+![Vocabulary and Embedding Sizes](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1085_1ABVT_5EG.jpeg)
+
+Continuing our tally towards the total of 175 billion parameters, it's crucial to understand that embedding vectors in transformers encode more than just individual words. They integrate positional information and have the capacity to absorb context.
+
+![Context Absorption](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1120_lrnAcksaI.jpeg)
+
+A vector that begins as the embedding for &quot;king&quot; might evolve as it moves through the network, eventually pointing in a direction that encodes a very specific and nuanced context.
+
+![Vector Evolution](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1125_ZXza8Qc_N.jpeg)
+
+This reflects how our own understanding of a word is shaped by its surrounding context, which can sometimes be drawn from far-off parts of a text.
+
+![Contextual Influences](https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1150_Fb7PlyBv9.jpeg)
+
+For instance, consider the following excerpt from J.K. Rowling's Harry Potter series:
+
+```text  
+Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework but was forced to do it in secret, in the dead of night. And he also happened to be a wizard.  
+</code></pre>
+<p>In this narrative, the meaning of "wizard" is influenced by the broader context of Harry's life and experiences, which includes information from the past and present circumstances.</p>
+<p>When building a model capable of predicting the next word in a sequence, the challenge is to enable each vector to assimilate context effectively. Initially, these vectors can only represent individual words, but the goal of the network is to let each vector absorb a richer, more specific meaning.</p>
+<p><img alt="Contextual Learning" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1175_963rpM6iV.jpeg" /></p>
+<p>The transformer's context size limits how much text it can consider when making predictions. GPT-3, for example, was trained with a context size of 248, which means it can process an array of 248 vectors at a time, each with 12,000 dimensions.</p>
+<p><img alt="Context Size Limitation" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1190_DOBiOb7dO.jpeg" /></p>
+<p>This context size restricts the amount of text the transformer can use in its predictions, which can sometimes lead to limitations in understanding long conversations with certain AI models, like early versions of chatbots.</p>
+<p>Returning to the Harry Potter example:</p>
+<pre><code class="language-text">Harry put his quill between his teeth and reached underneath his pillow for his ink bottle and a roll of parchment. Slowly and very carefully he unscrewed the ink bottle, dipped his quill into it, and began to write, pausing every now and then to listen, because if any of the Dursleys heard the scratching of his quill on their way to the bathroom, he'd probably find himself locked in the cupboard under the stairs for the rest of the summer.  
+</code></pre>
+<p>Here, the context of Harry's actions—writing in secret due to fear of punishment—adds layers of meaning to the words and reflects the complexity that models like GPT-3 are designed to capture.</p>
+<p>To summarize, as we delve into the world of language models and transformers, we witness an intricate interplay of high-dimensional spaces, context absorption, and the powerful ability to predict and generate language.<br />
+Moving forward with our exploration of Large Language Models (LLMs), we often notice that as conversations continue, the AI can appear to lose the thread. This reflects a limitation in maintaining long-term context, a challenge that the latest models strive to overcome.</p>
+<p>In practice, when providing assistance, an LLM might miss details, but can quickly correct itself upon realization. For instance, offering restaurant recommendations based on dietary preferences:</p>
+<ul>
+<li><strong>El Huerto</strong>: Known for a variety of flavorful vegetarian dishes.  </li>
+<li><strong>Sukine</strong>: Offers vegetarian options like vegetable sushi rolls and tofu dishes.  </li>
+<li><strong>Quinoa Restaurante</strong>: Specializes in vegetarian and vegan cuisine with creative quinoa-based dishes.  </li>
+<li><strong>Govindas</strong>: A go-to for vegetarian Indian cuisine.</li>
+</ul>
+<p>However, the mechanics of LLMs extend far beyond simple Q&amp;A interactions. Delving into the intricacies of model outputs, let's discuss the final stages of the prediction process.</p>
+<h3 id="final-prediction-step">The Final Prediction Step<a class="anchor" id="final-prediction-step"></a></h3>
+<p>At the very end of the model's processing, we aim for a probability distribution over all possible next tokens. For example, in a context involving the Harry Potter series, if the prompt includes "Professor" and references to "Harry Potter" and "least favorite teacher," a well-trained LLM might predict "Snape" with high probability.</p>
+<p>This prediction involves a two-step process:</p>
+<ol>
+<li>Utilize a matrix (often called the <em>output embedding matrix</em> or <em>unembedding matrix</em>) to map the final vector in the context to a list of 50,000 values, corresponding to the token vocabulary.  </li>
+<li>Apply the softmax function to normalize these values into a probability distribution.</li>
+</ol>
+<p><img alt="Final Prediction Example" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1225_6axfOpElY.jpeg" /></p>
+<p>One might wonder why only the last embedding is used to make this prediction. The reason lies in efficiency during the training process. Each vector in the final layer is used to make a simultaneous prediction for its immediate successor.</p>
+<p><img alt="Unembedding Matrix" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1260_lPdaBtNQD.jpeg" /></p>
+<p>The unembedding matrix, labeled WU, starts with random values but is refined during training. It has one row for each token and the same number of elements as the embedding dimension—adding another significant chunk to the model's parameter count.</p>
+<h3 id="understanding-softmax">Understanding Softmax<a class="anchor" id="understanding-softmax"></a></h3>
+<p>The softmax function plays a vital role in converting the final layer's output into a probability distribution. It ensures each value is between 0 and 1, and their sum equals 1. The function raises <code>e</code> to the power of each number, resulting in positive values, which are then normalized by dividing each by the sum of all values.</p>
+<pre><code class="language-python">import numpy as np
+
+def softmax(logits):  
+    exp_scores = np.exp(logits)  
+    return exp_scores / np.sum(exp_scores)
+
+# Example logits  
+logits = [2.0, 1.0, 0.1]  
+print(softmax(logits))  
+</code></pre>
+<p>In the context of LLMs like GPT-3, the softmax function's output determines the next word's probability. By manipulating the softmax temperature, we can adjust the model's predictability—lower temperatures lead to more predictable outputs, while higher temperatures allow for more creativity and variety.</p>
+<h3 id="temperature-softmax">Temperature in Softmax<a class="anchor" id="temperature-softmax"></a></h3>
+<p>The temperature parameter in softmax dictates the level of randomness in the prediction. A temperature close to 0 results in almost deterministic outputs, while a higher temperature encourages diversity.</p>
+<pre><code class="language-python">def temperature_softmax(logits, temperature=1.0):  
+    scaled_logits = np.array(logits) / temperature  
+    exp_scores = np.exp(scaled_logits)  
+    return exp_scores / np.sum(exp_scores)
+
+# Example with different temperatures  
+logits = [2.0, 1.0, 0.1]  
+print(&quot;T=0.5:&quot;, temperature_softmax(logits, temperature=0.5))  
+print(&quot;T=1.0:&quot;, temperature_softmax(logits, temperature=1.0))  
+print(&quot;T=2.0:&quot;, temperature_softmax(logits, temperature=2.0))  
+</code></pre>
+<p><img alt="Temperature Softmax" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1450_TZLVYX8A2.jpeg" /></p>
+<p>By varying the temperature, we can control the trade-off between the predictability and creativity of the generated text. A model might produce a cliché story at a lower temperature or a more original yet potentially nonsensical narrative at a higher temperature.</p>
+<h3 id="probabilities-logits">Exploring Probabilities and Logits<a class="anchor" id="probabilities-logits"></a></h3>
+<p>When discussing the output of LLMs, it's common to refer to the softmax function's input values as logits. These logits represent the raw, unnormalized scores for each possible next word, which the softmax function then converts into probabilities.</p>
+<p><img alt="Probabilities and Logits" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1550_b9nClMtiA.jpeg" /></p>
+<p>In anticipation of our next topic, it's essential to have a firm grasp of concepts like word embeddings, dot products, and the softmax function. These foundational elements will pave the way for a deeper understanding of the attention mechanism, a transformative component in modern AI.</p>
+<p><img alt="Attention Mechanism Lead Up" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1570_kaThkdTWE.jpeg" /></p>
+<p>The attention mechanism, which we will explore in the upcoming chapter, relies on the interplay between these concepts and the overarching structure of deep learning models.</p>
+<h3 id="deep-learning-structure">Deep Learning Structure<a class="anchor" id="deep-learning-structure"></a></h3>
+<p>To summarize, the structure of deep learning, as it pertains to language models, encompasses:</p>
+<ul>
+<li><strong>Word Embeddings</strong>: High-dimensional representations of words as vectors.  </li>
+<li><strong>Dot Products</strong>: A measure of similarity between vectors, used extensively in neural network computations.  </li>
+<li><strong>Softmax Function</strong>: A transformation that converts logits to probabilities, shaping the model's predictions.</li>
+</ul>
+<p>As we continue our journey through the intricacies of LLMs, we invite you to join us for the next installment, where we delve into the attention mechanism, a critical innovation in AI.</p>
+<p><img alt="Upcoming Attention Mechanism" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1590_ctmzz1hal.jpeg" /></p>
+<p>And for those eager to support and engage with the content further, exclusive previews and the opportunity to influence revisions are available to Patreon supporters.</p>
+<p><img alt="Support and Engagement" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1600_4X8a2UNFw.jpeg" /></p>
+<p>In lieu of traditional sponsor messages, this educational series is made possible through direct viewer support. A heartfelt thank you to all the contributors who make this work possible.</p>
+<p><img alt="Viewer Support" src="https://ik.imagekit.io/saqib/frames/wjZofJX0v4M/1625_dbEyjgVgh.jpeg" /></p>
+<p><em>Special thanks to supporters: .chance, Aeroeng15, Alexandru Irimiea, Aaron Binns, Alan Stein, Alexis Olson, Adam Cedrone, Albin Egasse, Ali Yahya, Adam Dřínek, Alex Hackman, Alioscha Schulze, and many others.</em></p>
+<p>The exploration of transformers takes us through a journey of high-dimensional spaces, matrix operations, and the ability to absorb and interpret context. Understanding these concepts is crucial for grasping the future direction of AI, as transformers continue to dominate the landscape of language models.</p>
+</body
