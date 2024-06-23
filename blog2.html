@@ -1,0 +1,1842 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>"Transformers</title>
+    <style>
+        /* Apply general styles to the body */
+        body {
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Ensure all images are responsive and fit within the container */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+        /* Apply some margin to paragraphs for readability */
+        p {
+            margin: 20px 0;
+        }
+
+        /* Ensure headers have some spacing */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Style links for better visibility */
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for pre and code elements to prevent horizontal scrolling */
+        pre {
+            white-space: pre-wrap;
+            /* Allows the content to wrap and prevents horizontal scrolling */
+            word-wrap: break-word;
+            /* Breaks long words to fit within the container */
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            /* Add scrollbars only if necessary */
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+        <h1>GPT: Generative Pre-trained Transformer</h1>
+<p>The initials GPT stand for <strong>Generative Pre-trained Transformer</strong>. Let’s break down what each of these words signifies:</p>
+<ul>
+<li><strong>Generative</strong>: These bots generate new text.  </li>
+<li><strong>Pre-trained</strong>: The model went through a process of learning from a massive amount of data with the potential for fine-tuning on specific tasks with additional training.  </li>
+<li><strong>Transformer</strong>: This is the core invention underlying the current boom in AI and is a specific kind of neural network machine learning model.</li>
+</ul>
+<h4>Table of Contents</h4>
+<ul>
+<li><a href="#gpt-generative-pre-trained-transformer">GPT: Generative Pre-trained Transformer</a>  </li>
+<li><a href="#transformers-and-their-role">Transformers and Their Role</a>  </li>
+<li><a href="#visually-driven-explanation">Visually Driven Explanation</a>  </li>
+<li><a href="#different-types-of-transformer-models">Different Types of Transformer Models</a>  </li>
+<li><a href="#applications-of-transformers">Applications of Transformers</a>  </li>
+<li><a href="#advanced-image-generation-models">The Rise of Advanced Image Generation Models</a>  </li>
+<li><a href="#text-translation-to-multimodal">Transformers: From Text Translation to Multimodal Models</a>  </li>
+<li><a href="#focus-on-language-models">Focus on Language Models</a>  </li>
+<li><a href="#predictive-text-generation">Predictive Text Generation</a>  </li>
+<li><a href="#generating-longer-texts">Generating Longer Texts</a>  </li>
+<li><a href="#generating-longer-texts-continued">Generating Longer Texts Continued</a>  </li>
+<li><a href="#interactive-text-generation">Interactive Text Generation</a>  </li>
+<li><a href="#understanding-data-flow">Understanding the Data Flow in Transformers</a>  </li>
+<li><a href="#token-representation">Token Representation</a>  </li>
+<li><a href="#attention-mechanism">The Attention Mechanism</a>  </li>
+<li><a href="#high-dimensional-vector-space">High-Dimensional Vector Space</a>  </li>
+<li><a href="#conclusion">Conclusion</a>  </li>
+<li><a href="#contextual-attention">Contextual Attention</a>  </li>
+<li><a href="#updating-token-meanings">Updating Token Meanings</a>  </li>
+<li><a href="#multi-layer-perceptron">Multi-layer Perceptron and Feed Forward Layers</a>  </li>
+<li><a href="#interpreting-feed-forward-layers">Interpreting Feed Forward Layers</a>  </li>
+<li><a href="#matrix-multiplications">Matrix Multiplications in Blocks</a>  </li>
+<li><a href="#alternating-blocks">Alternating Between Attention and MLP Blocks</a>  </li>
+<li><a href="#generating-text-sequences">Generating Text Sequences</a>  </li>
+<li><a href="#system-prompt">System Prompt for AI Assistants</a>  </li>
+<li><a href="#user-interaction">User Interaction and Prediction</a>  </li>
+<li><a href="#network-beginning-end">Network's Beginning and End</a>  </li>
+<li><a href="#background-knowledge">Important Background Knowledge</a>  </li>
+<li><a href="#premise-deep-learning">Premise of Deep Learning</a>  </li>
+<li><a href="#word-embeddings">Word Embeddings</a>  </li>
+<li><a href="#dot-products">Dot Products</a>  </li>
+<li><a href="#softmax">Softmax</a>  </li>
+<li><a href="#attention-blocks">Attention Blocks: The Heart of the Transformer</a>  </li>
+<li><a href="#mlp-training">Multi-Layer Perceptron Blocks and Training</a>  </li>
+<li><a href="#basic-premise">Basic Premise and Structure of Deep Learning</a>  </li>
+<li><a href="#predicting-next-word">Predicting the Next Word</a>  </li>
+<li><a href="#intuition-pattern-recognition">Intuition and Pattern Recognition in Machine Learning</a>  </li>
+<li><a href="#linear-regression">Linear Regression: The Simplest Form of Machine Learning</a>  </li>
+<li><a href="#deep-learning-scaling-up">Deep Learning: Scaling Up</a>  </li>
+<li><a href="#scale-gpt3">The Scale of GPT-3</a>  </li>
+<li><a href="#core-concepts">Core Concepts in Modern Machine Learning</a>  </li>
+<li><a href="#training-deep-learning">Training Deep Learning Models</a>  </li>
+<li><a href="#training-large-models">Understanding the Challenges of Training Large Models</a>  </li>
+<li><a href="#backpropagation">The Role of Backpropagation in Deep Learning</a>  </li>
+<li><a href="#data-representation">Data Representation and Transformation</a>  </li>
+<li><a href="#transforming-layers">Transforming Layers</a>  </li>
+<li><a href="#key-takeaways">Key Takeaways</a>  </li>
+<li><a href="#training-large-models">Understanding the Challenges of Training Large Models</a>  </li>
+<li><a href="#backpropagation">The Role of Backpropagation in Deep Learning</a>  </li>
+<li><a href="#data-representation">Data Representation and Transformation</a>  </li>
+<li><a href="#transforming-layers">Transforming Layers</a>  </li>
+<li><a href="#key-takeaways">Key Takeaways</a>  </li>
+<li><a href="#structured-data">Structured Data as Real Numbers</a>  </li>
+<li><a href="#matrices-in-large-language-models">Matrices in Large Language Models</a>  </li>
+<li><a href="#gpt-3-parameters">Understanding GPT-3's Parameters</a>  </li>
+<li><a href="#weights-and-computation">Weights and Computation</a>  </li>
+<li><a href="#embedding-matrices">Embedding Matrices</a>  </li>
+<li><a href="#attention-matrices">Attention Matrices</a>  </li>
+<li><a href="#feedforward-matrices">Feedforward Matrices</a>  </li>
+<li><a href="#layer-norm-matrices">Layer Norm Matrices</a>  </li>
+<li><a href="#key-points">Key Points to Remember</a>  </li>
+<li><a href="#weights-and-data">The Role of Weights and Data in LLMs</a>  </li>
+<li><a href="#text-processing-tokenization">Text Processing and Tokenization</a>  </li>
+<li><a href="#embedding-matrix">The Embedding Matrix</a>  </li>
+<li><a href="#vocabulary-tokenization">Vocabulary and Tokenization</a>  </li>
+<li><a href="#token-embeddings">Token Embeddings</a>  </li>
+<li><a href="#learning-word-vectors">Learning Word Vectors</a>  </li>
+<li><a href="#embedding-space">Embedding Space</a>  </li>
+<li><a href="#higher-dimensionality">Higher Dimensionality in Embeddings</a>  </li>
+<li><a href="#importance-high-dimensional-space">Importance of High-Dimensional Space</a>  </li>
+<li><a href="#animating-word-embeddings">Animating Word Embeddings</a>  </li>
+<li><a href="#embedding-space-projections">Embedding Space Projections</a>  </li>
+<li><a href="#embedding-space-projections">Embedding Space Projections</a>  </li>
+<li><a href="#vector-arithmetic">Vector Arithmetic in Embeddings</a>  </li>
+<li><a href="#embedding-limitations">Embedding Limitations and Observations</a>  </li>
+<li><a href="#gender-information">Gender Information in Embeddings</a>  </li>
+<li><a href="#country-leader-embeddings">Country and Leader Embeddings</a>  </li>
+<li><a href="#nearest-neighbors">Nearest Neighbors in Embeddings</a>  </li>
+<li><a href="#mathematical-insights">Mathematical Insights in Embeddings</a>  </li>
+<li><a href="#dot-products-intuition">Intuition Behind Dot Products</a>  </li>
+<li><a href="#plurality-in-embedding-space">Plurality in Embedding Space</a>  </li>
+<li><a href="#plurality-observations">Observations on Plurality Direction</a>  </li>
+<li><a href="#embedding-matrix">Embedding Matrix and Learned Data</a>  </li>
+<li><a href="#dot-products-application">Practical Application of Dot Products</a>  </li>
+<li><a href="#conclusion">Conclusion</a>  </li>
+<li><a href="#embedding-space-vocabulary">Embedding Space and Vocabulary Size</a>  </li>
+<li><a href="#embedding-dimension-weights">Embedding Dimension and Total Weights</a>  </li>
+<li><a href="#embedding-vectors-context">Embedding Vectors and Context</a>  </li>
+<li><a href="#contextual-transformation">Contextual Transformation of Embeddings</a>  </li>
+<li><a href="#practical-example-context">Practical Example of Embedding Context</a>  </li>
+<li><a href="#contextual-nuances">Contextual Nuances in Language Models</a>  </li>
+<li><a href="#context-word-meaning">Influence of Context on Word Meaning</a>  </li>
+<li><a href="#example-harry-potter">Practical Example: Harry Potter</a>  </li>
+<li><a href="#capturing-context">Capturing Contextual Information</a>  </li>
+<li><a href="#predict-next-word">Empowering Models to Predict the Next Word</a>  </li>
+<li><a href="#context-size-transformers">Context Size in Transformers</a>  </li>
+<li><a href="#implementing-context-transformers">Code Example: Implementing Context in Transformers</a>  </li>
+<li><a href="#visualizing-data-flow">Visualizing the Data Flow</a>  </li>
+<li><a href="#summary-key-points">Summary of Key Points</a>  </li>
+<li><a href="#challenges-chatbots">Challenges of Long Conversations in Chatbots</a>  </li>
+<li><a href="#context-limitation-example">Example of Context Limitation</a>  </li>
+<li><a href="#restaurant-recommendations">Restaurant Recommendations in Ñuñoa</a>  </li>
+<li><a href="#sukine">4. Sukine</a>  </li>
+<li><a href="#las-lanzas">5. Las Lanzas</a>  </li>
+<li><a href="#enhancing-chatbot-coherence">Enhancing Chatbot Coherence</a>  </li>
+<li><a href="#coherence-long-conversations">Coherence in Long Conversations</a>  </li>
+<li><a href="#addressing-context-limitation">Addressing Context Limitation in Chatbots</a>  </li>
+<li><a href="#vegetarian-restaurants-nunoa">Alternative Vegetarian-Friendly Restaurants in Ñuñoa</a>  </li>
+<li><a href="#el-huerto">1. El Huerto</a>  </li>
+<li><a href="#sukine-vegetarian">2. Sukine</a>  </li>
+<li><a href="#quinoa-restaurante">3. Quinoa Restaurante</a>  </li>
+<li><a href="#govindas">4. Govindas</a>  </li>
+<li><a href="#enhancing-coherence-memory-models">Enhancing Chatbot Coherence with Memory-Augmented Models</a>  </li>
+<li><a href="#implementation-example">Implementation Example</a>  </li>
+<li><a href="#improving-chatbot-performance">Improving Chatbot Performance</a>  </li>
+<li><a href="#attention-in-llms">Attention in Large Language Models</a>  </li>
+<li><a href="#generating-probability-distribution">Generating the Probability Distribution</a>  </li>
+<li><a href="#understanding-softmax">Understanding Softmax</a>  </li>
+<li><a href="#contextual-prediction">Contextual Prediction</a>  </li>
+<li><a href="#role-of-attention">The Role of Attention</a>  </li>
+<li><a href="#visualizing-attention-weights">Visualizing Attention Weights</a>  </li>
+<li><a href="#prediction-in-llms">Prediction in Large Language Models</a>  </li>
+<li><a href="#unembedding-matrix">Unembedding Matrix</a>  </li>
+<li><a href="#parameter-count">Parameter Count</a>  </li>
+<li><a href="#softmax-function">Softmax Function</a>  </li>
+<li><a href="#key-points">Key Points to Remember</a>  </li>
+<li><a href="#softmax-function-continued">Softmax Function (Continued)</a>  </li>
+<li><a href="#softmax-function-continued">Softmax Function (Continued)</a>  </li>
+<li><a href="#exploring-temperature">Exploring Temperature in Text Generation</a>  </li>
+<li><a href="#temperature-0">Temperature 0: Predictability at Its Peak</a>  </li>
+<li><a href="#higher-temperature">Higher Temperature: Injecting Creativity and Risk</a>  </li>
+<li><a href="#animation-mechanics">Animation Mechanics</a>  </li>
+<li><a href="#logits-role-text-generation">Logits and Their Role in Text Generation</a>  </li>
+<li><a href="#foundations-attention-mechanisms">Laying the Foundations for Understanding Attention Mechanisms</a>  </li>
+<li><a href="#attention-mechanism-primer">The Attention Mechanism: A Primer</a>  </li>
+<li><a href="#key-concepts-attention">Key Concepts in Attention Mechanisms</a>  </li>
+<li><a href="#attention-in-action">Practical Example: Attention in Action</a>  </li>
+<li><a href="#upcoming-content-community-support">Upcoming Content and Community Support</a>  </li>
+<li><a href="#continuation-series">Continuation of the Series</a></li>
+</ul>
+<h3 id="gpt-generative-pre-trained-transformer">GPT: Generative Pre-trained Transformer<a class="anchor" id="gpt-generative-pre-trained-transformer"></a></h3>
+<p>The initials GPT stand for <strong>Generative Pre-trained Transformer</strong>. Let’s break down what each of these words signifies:</p>
+<ul>
+<li><strong>Generative</strong>: These bots generate new text.  </li>
+<li><strong>Pre-trained</strong>: The model went through a process of learning from a massive amount of data with the potential for fine-tuning on specific tasks with additional training.  </li>
+<li><strong>Transformer</strong>: This is the core invention underlying the current boom in AI and is a specific kind of neural network machine learning model.</li>
+</ul>
+<p><img alt="GPT Explanation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/15.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=rVf5%2BKGHeejHcYLhLSCesqxkOSY1gjNAmFOMzpJBBmk%3D" /></p>
+<h3 id="transformers-and-their-role">Transformers and Their Role<a class="anchor" id="transformers-and-their-role"></a></h3>
+<p>A transformer is a neural network model and the core invention underlying the current AI boom. Transformers have revolutionized how we approach various tasks in natural language processing (NLP) and beyond. Let's highlight what makes transformers unique and powerful:</p>
+<p><img alt="Transformers Core" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/25.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=MFjsKkbUXALAYuoSuBxn92neNh8NFn66Jw1jTgew8SM%3D" /></p>
+<p>Transformers enable the processing of sequential data by:</p>
+<ul>
+<li>Utilizing <strong>self-attention mechanisms</strong> to weigh the importance of different parts of the input data.  </li>
+<li>Allowing for <strong>parallel processing</strong> of data, unlike traditional recurrent models that process sequentially.  </li>
+<li>Being <strong>scalable</strong> and <strong>efficient</strong> for training on large datasets.</li>
+</ul>
+<p><img alt="AI Boom" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/30.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=TBnIeUL%2BKdEhYwUmOmyN4jBR9dm7h8s7Amsd6JsbBBA%3D" /></p>
+<h3 id="visually-driven-explanation">Visually Driven Explanation<a class="anchor" id="visually-driven-explanation"></a></h3>
+<p>What follows is a visually driven explanation of what happens inside a transformer. We will follow the data as it flows step by step through the model. </p>
+<p><img alt="Step-by-Step" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/35.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=zmy43UGhYh7yuPtRFu9hk8zD03zLT3lVNXcsWR5qmVQ%3D" /></p>
+<h3 id="different-types-of-transformer-models">Different Types of Transformer Models<a class="anchor" id="different-types-of-transformer-models"></a></h3>
+<p>There are various models built using transformers, each tailored for specific tasks. Some examples include:</p>
+<ul>
+<li><strong>Audio-to-Text Models</strong>: Converts audio input into text transcripts.  </li>
+<li><strong>Text-to-Speech Models</strong>: Generates synthetic speech from text input.</li>
+</ul>
+<p><img alt="Audio to Text" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/40.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=LC2Q8B5N0Zy7SYJJLq5Xz0ylD87E8aQNaUgp/sI6xkQ%3D" /></p>
+<h3 id="applications-of-transformers">Applications of Transformers<a class="anchor" id="applications-of-transformers"></a></h3>
+<p>Transformers have a wide range of applications, including but not limited to:</p>
+<ul>
+<li><strong>Language Translation</strong>: Converting text from one language to another.  </li>
+<li><strong>Text Summarization</strong>: Creating concise summaries of longer texts.  </li>
+<li><strong>Question Answering</strong>: Generating answers to questions based on provided context.</li>
+</ul>
+<p><img alt="Synthetic Speech" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/50.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=TVscMGkbI35DUYZZvpURbgNxirjZb3j9HwbO7s7wD2w%3D" /></p>
+<p>By understanding the mechanics and applications of transformers, we can better appreciate the potential and versatility of these models in various fields of artificial intelligence and machine learning.</p>
+<p><img alt="Tools" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/55.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=yLzy8D9YaJP8la64CYjPw9cBpEC5FgLrNlJ990Rj4lI%3D" />  </p>
+<h3 id="advanced-image-generation-models">The Rise of Advanced Image Generation Models<a class="anchor" id="advanced-image-generation-models"></a></h3>
+<p>The year 2022 witnessed the emergence of advanced models like Dolly and MidJourney, which leverage transformer architectures to convert textual descriptions into images. These tools have demonstrated the ability to produce images based on textual input, showcasing the transformative capabilities of modern AI.</p>
+<p><img alt="Image Generation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/60.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=N1BUSIOGJQ6cBMCrxcnlVNkR28Fz5EUccQdZcNYkQAc%3D" /></p>
+<p>Even though these models sometimes struggle with highly abstract concepts, such as generating an image of a "pie creature," their capabilities remain astonishingly advanced. </p>
+<h3 id="text-translation-to-multimodal">Transformers: From Text Translation to Multimodal Models<a class="anchor" id="text-translation-to-multimodal"></a></h3>
+<p>The original transformer was introduced by Google in 2017 to address text translation between languages. However, the versatility of the transformer architecture has since led to its application in various domains, including multimodal models that handle text, images, and even sound.</p>
+<p><img alt="Multimodal Transformer" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/80.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=hYo4EFwNH1wdom/wuGs3Hb/pL9IAiXNChVB3SokG%2BxI%3D" /></p>
+<h3 id="focus-on-language-models">Focus on Language Models<a class="anchor" id="focus-on-language-models"></a></h3>
+<p>Specifically, we will focus on the type of transformer model that underlies tools like ChatGPT. These models are trained to process a piece of text and potentially other accompanying data, such as images or sounds, to produce predictions about what comes next in the sequence.</p>
+<p><img alt="ChatGPT" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/85.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=MimoC%2B/TEjRCCXsMzRgPIE1FiqqK4R69Oi/R396cVX0%3D" /></p>
+<h3 id="predictive-text-generation">Predictive Text Generation<a class="anchor" id="predictive-text-generation"></a></h3>
+<p>The core functionality of these language models involves generating a prediction for what comes next in a passage of text. This prediction is represented as a probability distribution over potential next words or chunks of text.</p>
+<p><img alt="Predictive Text" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/90.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=8hwrtonO8U1vWDpyxBgco6Lk1m8m6hNwypZ0z5mqpb0%3D" /></p>
+<h3 id="generating-longer-texts">Generating Longer Texts<a class="anchor" id="generating-longer-texts"></a></h3>
+<p>Although predicting the next word in a sequence might seem fundamentally different from generating entirely new text, the process is surprisingly similar. By taking the following steps, a language model can generate longer pieces of text:</p>
+<ol>
+<li><strong>Initial Snippet</strong>: Provide the model with an initial snippet of text.  </li>
+<li><strong>Sampling</strong>: Randomly sample from the probability distribution generated by the model.  </li>
+<li><strong>Appending</strong>: Append the sampled text to the existing snippet.  </li>
+<li><strong>Iteration</strong>: Repeat the process, using the updated text as the new input.</li>
+</ol>
+<p>This iterative approach can extend the text significantly while maintaining coherence and context.</p>
+<p><img alt="Text Generation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/120.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=TnkNfNIDpk4be4e2UaKJGkjBMQ75CyZdL2LpawDnfBI%3D" /></p>
+<p>By understanding these steps and the underlying mechanisms, we can appreciate how transformers enable complex tasks such as text generation and multimodal data processing. The implications for AI and machine learning are vast, with potential applications across numerous fields.  </p>
+<h3 id="generating-longer-texts-continued">Generating Longer Texts Continued<a class="anchor" id="generating-longer-texts-continued"></a></h3>
+<p>The process of text generation in language models involves continuously iterating through the same prediction and sampling steps to extend the text. This iterative approach can yield coherent and contextually consistent text, although it may seem unintuitive at first.</p>
+<pre><code class="language-python"># Example of iterative text generation using GPT-2
+
+import torch  
+from transformers import GPT2LMHeadModel, GPT2Tokenizer
+
+# Load pre-trained model and tokenizer  
+model_name = 'gpt2'  
+model = GPT2LMHeadModel.from_pretrained(model_name)  
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+
+# Initial seed text  
+seed_text = &quot;Once upon a time in a land of computation,&quot;  
+input_ids = tokenizer.encode(seed_text, return_tensors='pt')
+
+# Generate text  
+output = model.generate(input_ids, max_length=100, num_return_sequences=1)
+
+# Decode and print the result  
+print(tokenizer.decode(output[0], skip_special_tokens=True))
+
+# Output (example):  
+# Once upon a time in a land of computation, there lived a pie creature who loved solving equations...  
+</code></pre>
+<p>In the animation below, the GPT-2 model on a laptop generates a story based on the seed text, "Once upon a time in a land of computation." While the story may lack coherence, replacing the model with GPT-3, a larger version of the same architecture, results in a more sensible narrative.</p>
+<p><img alt="GPT-3 Prediction" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/170.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=nggSJkHIBvjGLifCFgEfg7F0k0dDTLv/iZaajOa40x8%3D" /></p>
+<p>This repeated prediction and sampling process is essentially what happens when interacting with tools like ChatGPT. The model produces one word at a time, creating the illusion of continuous and fluent text generation.</p>
+<h3 id="interactive-text-generation">Interactive Text Generation<a class="anchor" id="interactive-text-generation"></a></h3>
+<p>One fascinating aspect of large language models is their interactive nature. When you input text into models like ChatGPT, the model generates responses by predicting one word at a time. This process can be visualized through the underlying probability distribution for each new word choice.</p>
+<p><img alt="Interactive Text Generation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/185.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=4UMZhpDXRWy4K4UOuEBCe85YMm9pHHJtZrStBLqUI4E%3D" /></p>
+<p>To understand this better, let's delve into how the model generates text interactively. Consider the following high-level steps:</p>
+<ol>
+<li><strong>Seed Text</strong>: Provide the model with an initial piece of text.  </li>
+<li><strong>Prediction</strong>: The model predicts the next word based on the current text.  </li>
+<li><strong>Sampling</strong>: A word is sampled from the model's probability distribution.  </li>
+<li><strong>Appending</strong>: The sampled word is added to the current text.  </li>
+<li><strong>Iteration</strong>: The new text is fed back into the model for further predictions.</li>
+</ol>
+<p>Here's a Python snippet demonstrating this process using the GPT-2 model:</p>
+<pre><code class="language-python"># Load the pre-trained model and tokenizer  
+model_name = 'gpt2'  
+model = GPT2LMHeadModel.from_pretrained(model_name)  
+tokenizer = GPT2Tokenizer.from_pretrained(model_name)
+
+seed_text = &quot;In a world of advanced AI,&quot;  
+input_ids = tokenizer.encode(seed_text, return_tensors='pt')
+
+# Generate text interactively  
+for _ in range(50):  # Generate 50 tokens  
+    outputs = model(input_ids)  
+    predictions = outputs[0]  
+    next_token_logits = predictions[:, -1, :]  
+    next_token = torch.argmax(next_token_logits, dim=-1)  
+    input_ids = torch.cat([input_ids, next_token.unsqueeze(-1)], dim=-1)
+
+# Decode and print the result  
+print(tokenizer.decode(input_ids[0], skip_special_tokens=True))
+
+# Output (example):  
+# In a world of advanced AI, where machines could think and learn, humanity faced a new era of...  
+</code></pre>
+<p>By iterating through these steps, the model can produce extended text that appears coherent and contextually relevant. The ability to see the underlying distribution for each new word enhances our understanding of the model's decision-making process.</p>
+<p>In summary, the generative capabilities of transformer models like GPT-2 and GPT-3 showcase the potential of AI in creating coherent and contextually rich text. The iterative prediction and sampling approach, combined with the model's ability to handle complex input, opens up exciting possibilities for interactive and dynamic text generation.  </p>
+<h3 id="understanding-data-flow">Understanding the Data Flow in Transformers<a class="anchor" id="understanding-data-flow"></a></h3>
+<p>The flow of data through a Transformer model is a fascinating process. To generate a given word, here's what goes on under the hood. Initially, the input is broken up into smaller pieces called tokens. These tokens can represent:</p>
+<ul>
+<li>Words  </li>
+<li>Parts of words  </li>
+<li>Common character combinations</li>
+</ul>
+<p>If the model is dealing with images or sound, the tokens might be small patches of the image or chunks of the sound.</p>
+<p><img alt="Tokenization Illustration" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/190.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=z1TenB9hms5eAop3WAt9/Zkmf1jY6Pf1/mz3stqqprc%3D" /></p>
+<h3 id="token-representation">Token Representation<a class="anchor" id="token-representation"></a></h3>
+<p>Each token is then associated with a vector, a list of numbers that encodes the meaning of that token. These vectors are high-dimensional and can be thought of as coordinates in a complex space. Words with similar meanings tend to have vectors that are close to each other in this high-dimensional space.</p>
+<p><img alt="Token Vector Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/215.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=SVf7U/zxg0eAUT4EE/rWy0bhxo1araQcRhF3Jyq1akY%3D" /></p>
+<p>For example, consider the following Python snippet that illustrates how tokens might be represented as vectors:</p>
+<pre><code class="language-python">import numpy as np
+
+# Example tokens  
+tokens = [&quot;hello&quot;, &quot;world&quot;, &quot;machine&quot;, &quot;learning&quot;]
+
+# Example vectors (randomly generated for illustration)  
+vectors = {  
+    &quot;hello&quot;: np.random.rand(10),  
+    &quot;world&quot;: np.random.rand(10),  
+    &quot;machine&quot;: np.random.rand(10),  
+    &quot;learning&quot;: np.random.rand(10)  
+}
+
+# Print vectors  
+for token, vector in vectors.items():  
+    print(f&quot;Token: {token}, Vector: {vector}&quot;)  
+</code></pre>
+<p>In practice, these vectors are learned during the training process and can capture intricate relationships between tokens.</p>
+<h3 id="attention-mechanism">The Attention Mechanism<a class="anchor" id="attention-mechanism"></a></h3>
+<p>After token vectors are created, they pass through an attention block. The attention mechanism enables these vectors to "communicate" with each other, allowing the model to understand context and relationships between different tokens.</p>
+<p><img alt="Attention Mechanism" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/225.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=wPtBbACh8KYoTlQUopeqZW9V8H%2Bfdlz33383xKo9vEo%3D" /></p>
+<p>Here's a simplified version of how the attention mechanism works using PyTorch:</p>
+<pre><code class="language-python">import torch  
+import torch.nn.functional as F
+
+def attention(query, key, value):  
+    scores = torch.matmul(query, key.transpose(-2, -1)) / torch.sqrt(key.size(-1))  
+    weights = F.softmax(scores, dim=-1)  
+    output = torch.matmul(weights, value)  
+    return output
+
+# Example tensor inputs  
+query = torch.rand(1, 10)  
+key = torch.rand(1, 10)  
+value = torch.rand(1, 10)
+
+# Compute attention  
+output = attention(query, key, value)  
+print(&quot;Attention Output:&quot;, output)  
+</code></pre>
+<p>The attention mechanism ensures that the context is maintained and relevant information is highlighted, enabling the model to generate coherent and contextually appropriate text.</p>
+<h3 id="high-dimensional-vector-space">High-Dimensional Vector Space<a class="anchor" id="high-dimensional-vector-space"></a></h3>
+<p>The high-dimensional space that the token vectors inhabit allows for nuanced and complex relationships to be encoded. Words with similar meanings will have vectors that are closer together in this space, facilitating better understanding and generation of text by the model.</p>
+<p><img alt="Vector Space" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/230.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/SYIDLO99kL8TcRI3KDFN9Q6RfHCqDcrydMjhuoqqN8%3D" /></p>
+<p>Let's visualize this concept with a simple Python example using the <code>matplotlib</code> library:</p>
+<pre><code class="language-python">import matplotlib.pyplot as plt  
+from sklearn.decomposition import PCA
+
+# Example vectors (randomly generated for illustration)  
+vectors = np.random.rand(100, 10)
+
+# Reduce dimensionality for visualization  
+pca = PCA(n_components=2)  
+reduced_vectors = pca.fit_transform(vectors)
+
+# Plot vectors  
+plt.scatter(reduced_vectors[:, 0], reduced_vectors[:, 1])  
+plt.title('Token Vectors in Reduced Space')  
+plt.xlabel('Component 1')  
+plt.ylabel('Component 2')  
+plt.show()  
+</code></pre>
+<p>This plot demonstrates how token vectors might be distributed in a reduced two-dimensional space, providing insights into their relationships.</p>
+<h3 id="conclusion">Conclusion<a class="anchor" id="conclusion"></a></h3>
+<p>The process of tokenization, vector representation, and attention mechanism is at the heart of how Transformers handle and generate text. By breaking down inputs into tokens, associating them with high-dimensional vectors, and allowing these vectors to interact through attention mechanisms, Transformers achieve their impressive capabilities in understanding and generating human-like text.</p>
+<p><img alt="Attention Block" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/240.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=81qHkSc1WGox06asM017V/IkMqKVlc1gvsfTa42wL/o%3D" /></p>
+<p>Understanding these processes is crucial for leveraging the power of large language models effectively.  </p>
+<h3 id="contextual-attention">Contextual Attention<a class="anchor" id="contextual-attention"></a></h3>
+<p>The attention block is responsible for understanding the context in which words are used and updating their meanings accordingly. For instance, the meaning of the word <strong>model</strong> in the phrase <strong>"a machine learning model"</strong> is different from its meaning in the phrase <strong>"a fashion model"</strong>. The attention mechanism determines which words are contextually relevant and adjusts their vector representations.</p>
+<p><img alt="Attention Mechanism Example" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/255.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=XyETcjNHAHrL32UPkP3pDhZRnN6/qDwKAfWq5JJOiPg%3D" /></p>
+<p>This mechanism ensures that contextually appropriate representations are formed, allowing the model to understand and generate coherent text.</p>
+<h3 id="updating-token-meanings">Updating Token Meanings<a class="anchor" id="updating-token-meanings"></a></h3>
+<p>The vectors representing tokens are constantly being updated based on their context. This updating process involves complex interactions between the vectors, which are facilitated by the attention mechanism. The attention block dynamically adjusts the vectors to reflect the contextual meanings of the tokens.</p>
+<p><img alt="Token Update Process" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/270.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=8OOGRJr0sDPk6kVTjO%2BqxjHwUMSLIq36qaUVdEYTnYU%3D" /></p>
+<h3 id="multi-layer-perceptron">Multi-layer Perceptron and Feed Forward Layers<a class="anchor" id="multi-layer-perceptron"></a></h3>
+<p>After the attention mechanism, the vectors pass through a different kind of operation, often referred to as a <strong>multi-layer perceptron</strong> or a <strong>feed forward layer</strong>. Unlike the attention mechanism, these operations do not involve interactions between the vectors; they are applied to each vector independently and in parallel.</p>
+<p><img alt="Feed Forward Layer" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/275.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=IeR3vijODwKOZRnlvD2EYWXeJRiuVpSwfMEBA0UA5rc%3D" /></p>
+<p>Here's a simplified version of a feed-forward layer in PyTorch:</p>
+<pre><code class="language-python">import torch.nn as nn
+
+class FeedForwardLayer(nn.Module):  
+    def __init__(self, input_dim, hidden_dim, output_dim):  
+        super(FeedForwardLayer, self).__init__()  
+        self.fc1 = nn.Linear(input_dim, hidden_dim)  
+        self.fc2 = nn.Linear(hidden_dim, output_dim)  
+        self.relu = nn.ReLU()
+
+    def forward(self, x):  
+        x = self.relu(self.fc1(x))  
+        x = self.fc2(x)  
+        return x
+
+# Example usage  
+input_dim = 10  
+hidden_dim = 20  
+output_dim = 10  
+ff_layer = FeedForwardLayer(input_dim, hidden_dim, output_dim)
+
+# Example input tensor  
+input_tensor = torch.rand((1, input_dim))  
+output_tensor = ff_layer(input_tensor)  
+print(&quot;Feed Forward Output:&quot;, output_tensor)  
+</code></pre>
+<p>These layers transform the vectors through non-linear operations, adding depth to the model's understanding.</p>
+<p><img alt="Feed Forward Layer Parallelism" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/280.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Srr2zVeqE6GV32rkdx6K52i4hhlSWkPQJNxhPoBvWEI%3D" /></p>
+<h3 id="interpreting-feed-forward-layers">Interpreting Feed Forward Layers<a class="anchor" id="interpreting-feed-forward-layers"></a></h3>
+<p>Interpreting the operations of feed-forward layers can be challenging. However, one way to think about them is as a series of questions posed to each vector, with the vectors being updated based on the answers to these questions. This analogy helps in understanding how these layers contribute to the refinement of token representations.</p>
+<p><img alt="Questioning Vectors" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/285.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=1fwIhjZ6B1PN5w80YJnzBDBB4fG%2BlQVvxumlAmr2aR8%3D" /></p>
+<p>Let's illustrate this with a simple example:</p>
+<pre><code class="language-python">import torch
+
+def question_vectors(vectors, weights):  
+    updated_vectors = []  
+    for vector in vectors:  
+        # Simulate asking a series of questions  
+        question_responses = torch.matmul(weights, vector)  
+        updated_vector = vector + question_responses  
+        updated_vectors.append(updated_vector)  
+    return updated_vectors
+
+# Example vectors and weights  
+vectors = [torch.rand(10) for _ in range(5)]  
+weights = torch.rand(10, 10)
+
+# Update vectors based on questions  
+updated_vectors = question_vectors(vectors, weights)  
+for i, vec in enumerate(updated_vectors):  
+    print(f&quot;Updated Vector {i+1}: {vec}&quot;)  
+</code></pre>
+<p>This example demonstrates how the vectors might be updated based on a series of simulated questions, providing a conceptual understanding of the feed-forward operations.</p>
+<p><img alt="Vector Updates" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/290.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=SAB2jxWjSJ/TNBuN2P2yq8Gd7ch/lRJtthcCB7vzE18%3D" /></p>
+<p>In summary, the combination of attention mechanisms and feed-forward layers enables the model to understand complex contexts and generate accurate, context-aware text.  </p>
+<h3 id="matrix-multiplications">Matrix Multiplications in Blocks<a class="anchor" id="matrix-multiplications"></a></h3>
+<p>All of the operations in both the attention and multilayer perceptron blocks look like a giant pile of <strong>matrix multiplications</strong>:</p>
+<p><img alt="Matrix Multiplications" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/295.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=YuqBuZ1bN7zCVTSZqQiP0045LJV4LxwMIdBEZGoSbbE%3D" /></p>
+<p>To understand these blocks, our primary job is to comprehend the underlying matrices:</p>
+<p><img alt="Underlying Matrices" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/300.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=hyut4UwXyYft80HR02FEAqxmxRDv1oKL%2BlprXvdEJRU%3D" /></p>
+<p>I'm glossing over some details about normalization steps that happen in between, but this is after all a high-level preview:</p>
+<p><img alt="Normalization Steps" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/305.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=3bJ6QYDkkIzN2W/xl/XGOFpyi0pGtTWk5JsUQfkkMss%3D" /></p>
+<p>After that, the process essentially repeats:</p>
+<p><img alt="Process Repeats" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/310.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=CfylGSpIAoLMaVIIlaNxQhZIRxr/VjL6V7K2IFxycW0%3D" /></p>
+<h3 id="alternating-blocks">Alternating Between Attention and MLP Blocks<a class="anchor" id="alternating-blocks"></a></h3>
+<p>You go back and forth between <strong>attention blocks</strong> and <strong>multilayer perceptron blocks</strong>:</p>
+<p><img alt="Attention and MLP Blocks" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/315.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ms12XRM6IJSRQjOQYMR0yQ76csGL3IrP5u5k68qfgDc%3D" /></p>
+<p>Until at the very end, the hope is that all of the essential meaning of the passage has somehow been baked into the very last vector in the sequence:</p>
+<p><img alt="Last Vector" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/320.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=w//hrscLiKQ3%2BGg7G26OccLSR6OE/QJEfMze2DROCwU%3D" /></p>
+<p>We then perform a certain operation on that last vector that produces a probability distribution over all possible tokens:</p>
+<p><img alt="Probability Distribution" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/325.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=CTIwY007HYaqryZwSmQWIl3YJpOrjkRt1s%2BWGrH/n5A%3D" /></p>
+<h3 id="generating-text-sequences">Generating Text Sequences<a class="anchor" id="generating-text-sequences"></a></h3>
+<p>This probability distribution represents possible little chunks of text that might come next. Once you have a tool that predicts what comes next given a snippet of text, you can feed it a little bit of seed text and have it repeatedly play this game of predicting what comes next, sampling from the distribution, appending it, and then repeating over and over:</p>
+<p><img alt="Text Prediction" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/330.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=IQ1Zbiao4WTRAEfQ5ygo1oN9OVXqFhL9lbmr5uiGRX4%3D" /></p>
+<p>Some of you in the know may remember how long before ChatGPT came into the scene, this is what early demos of GPT-3 looked like. You would have it autocomplete stories and essays based on an initial snippet. To make a tool like this into a chat bot, the easiest starting point is to have a little bit of text that establishes the setting:</p>
+<p><img alt="Chat Bot Setup" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/340.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=e/08h9lS0oCqicVgBxpWrKDnkisJSfr%2B3pVECq54KrI%3D" /></p>
+<p>The combination of these repeated steps ensures that the generated text remains coherent and contextually relevant.  </p>
+<h3 id="system-prompt">System Prompt for AI Assistants<a class="anchor" id="system-prompt"></a></h3>
+<p>To create an interactive experience with a helpful AI assistant, we start by establishing a <strong>system prompt</strong>. This prompt sets the context for the interaction:</p>
+<p><img alt="System Prompt" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/375.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=A7n6o2PzR%2Bm6AwauOLY%2Bi18gLbzjjXP2wYeLMzn08yA%3D" /></p>
+<p>Next, we use the user's initial question or prompt as the first bit of dialogue. Here, the AI assistant would start predicting responses based on this initial input.</p>
+<h3 id="user-interaction">User Interaction and Prediction<a class="anchor" id="user-interaction"></a></h3>
+<p>The interaction process involves:</p>
+<ol>
+<li><strong>User's Initial Prompt</strong>: The user's question or request sets the stage.  </li>
+<li><strong>AI Response Prediction</strong>: The AI assistant predicts and generates a helpful response.</li>
+</ol>
+<p>There is an additional training step to make this interaction smooth, but at a high level, this is the basic workflow.</p>
+<h3 id="network-beginning-end">Network's Beginning and End<a class="anchor" id="network-beginning-end"></a></h3>
+<p>In this chapter, we will delve into the details of what happens at the very beginning and the very end of the network:</p>
+<p><img alt="Network Details" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/400.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=l7TQlGyYcRmaQa1/WCyOxkwsm6cqbRf%2BeCKU0%2BSo8Ug%3D" /></p>
+<p>We'll also review some key bits of background knowledge essential for understanding these mechanisms.</p>
+<h3 id="background-knowledge">Important Background Knowledge<a class="anchor" id="background-knowledge"></a></h3>
+<p>Before diving into the intricacies of transformer networks, it's crucial to cover some foundational concepts:</p>
+<ul>
+<li><strong>Premise of Deep Learning</strong>  </li>
+<li><strong>Word Embeddings</strong>  </li>
+<li><strong>Dot Products</strong>  </li>
+<li><strong>Softmax</strong></li>
+</ul>
+<p>These concepts are second nature to any machine learning engineer by the time transformers came onto the scene.</p>
+<p><img alt="Background Knowledge" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/405.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Go7BV7D%2B2YMMsJzrMxAXqcNxt85IToGmnOdeTNp0md4%3D" /></p>
+<h4 id="premise-deep-learning">Premise of Deep Learning<a class="anchor" id="premise-deep-learning"></a></h4>
+<p>Deep learning, at its core, is about learning representations from data using neural networks. This learning process involves multiple layers of abstraction, which helps in capturing complex patterns and features.</p>
+<h4 id="word-embeddings">Word Embeddings<a class="anchor" id="word-embeddings"></a></h4>
+<p>Word embeddings are a type of word representation that allows words to be represented as vectors in a continuous vector space. These embeddings help in capturing semantic similarities between words.</p>
+<p>For example, using Python and PyTorch, we can create word embeddings as follows:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example vocabulary  
+vocab = [&quot;hello&quot;, &quot;world&quot;, &quot;deep&quot;, &quot;learning&quot;]  
+vocab_size = len(vocab)  
+embedding_dim = 50
+
+# Create embedding layer  
+embedding_layer = nn.Embedding(vocab_size, embedding_dim)
+
+# Example input (index of words in the vocabulary)  
+input = torch.LongTensor([0, 1, 2, 3])
+
+# Get embeddings  
+embeddings = embedding_layer(input)  
+print(embeddings)  
+</code></pre>
+<h4 id="dot-products">Dot Products<a class="anchor" id="dot-products"></a></h4>
+<p>Dot products are fundamental in various deep learning computations, particularly in measuring the similarity between vectors. In the context of word embeddings, the dot product can help in comparing the similarity between different word vectors.</p>
+<pre><code class="language-python">import numpy as np
+
+# Example vectors  
+vector_a = np.array([1, 2, 3])  
+vector_b = np.array([4, 5, 6])
+
+# Calculate dot product  
+dot_product = np.dot(vector_a, vector_b)  
+print(dot_product)  # Output: 32  
+</code></pre>
+<h4 id="softmax">Softmax<a class="anchor" id="softmax"></a></h4>
+<p>The softmax function is used in the output layer of neural networks for classification tasks. It converts logits (raw prediction scores) into probabilities.</p>
+<pre><code class="language-python">import torch  
+import torch.nn.functional as F
+
+# Example logits  
+logits = torch.tensor([2.0, 1.0, 0.1])
+
+# Apply softmax  
+probabilities = F.softmax(logits, dim=0)  
+print(probabilities)  # Output: tensor([0.6590, 0.2424, 0.0986])  
+</code></pre>
+<p>Understanding these concepts is crucial for grasping the mechanisms of transformer networks and their applications in natural language processing.</p>
+<p><img alt="Key Concepts" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/415.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=qFW/5q1DgnKmxvrI7NoV98lTe11Ls5LFES3i/Tr6/hw%3D" /></p>
+<p>By mastering these foundational elements, you'll be better equipped to understand the advanced workings of AI assistants and the underlying deep learning models.  </p>
+<h3 id="attention-blocks">Attention Blocks: The Heart of the Transformer<a class="anchor" id="attention-blocks"></a></h3>
+<p>You could probably feel free to skip to the next chapter, which is going to focus on the <strong>attention blocks</strong>, generally considered the heart of the transformer. Attention mechanisms allow models to focus on specific parts of the input sequence, making them crucial for processing and understanding large sequences of data.</p>
+<p><img alt="Attention Blocks" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/420.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=7L6zWYOl80oW0pHZGEYbkbbH/3IjaGRTEg0fSGJ%2BLGs%3D" /></p>
+<h3 id="mlp-training">Multi-Layer Perceptron Blocks and Training<a class="anchor" id="mlp-training"></a></h3>
+<p>After that, I want to talk more about <strong>multi-layer perceptron (MLP) blocks</strong>, how training works, and a number of other details that will have been skipped up to that point. MLPs are the building blocks of neural networks, consisting of multiple layers of neurons that transform input data into the desired output.</p>
+<p><img alt="MLP Blocks" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/425.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=GZ7phqEaI0AxQnHqrAYFGFx2HQdRQ7uHxER9kw0gLWo%3D" /></p>
+<p>For broader context, these videos are additions to a mini-series about deep learning, and it's okay if you haven't watched the previous ones. I think you can do it out of order, but before diving into transformers specifically, it's worth making sure that we're on the same page about the basic premise and structure of deep learning.</p>
+<p><img alt="Deep Learning Series" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/435.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=DBqSKiVE0l1G/lasiuUiWOUf1DhKNV8RbM1Bs/Fucfk%3D" /></p>
+<h3 id="basic-premise">Basic Premise and Structure of Deep Learning<a class="anchor" id="basic-premise"></a></h3>
+<p>At the risk of stating the obvious, this is one approach to machine learning, which describes any model where you're using data to somehow determine how a model behaves.</p>
+<p><img alt="Model Behavior" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/450.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=v7X3X6jUC95n8mIXmvXC3%2BycyLvL35VpUPo5XBI0u0k%3D" /></p>
+<p>What I mean by that is, let's say you want a function that takes in an image and it produces a label describing it, or an example of predicting the next word given a passage of text.</p>
+<h3 id="predicting-next-word">Predicting the Next Word<a class="anchor" id="predicting-next-word"></a></h3>
+<p>Predicting the next word in a sequence is a fundamental task in natural language processing (NLP). This involves several steps:</p>
+<ol>
+<li><strong>Input Sequence</strong>: The input sequence is tokenized and converted into a numerical format.  </li>
+<li><strong>Embedding Layer</strong>: The tokens are passed through an embedding layer.  </li>
+<li><strong>Attention Mechanism</strong>: The attention mechanism helps in focusing on relevant parts of the sequence.  </li>
+<li><strong>Output Layer</strong>: Finally, the model predicts the next word based on the learned patterns.</li>
+</ol>
+<p><img alt="Predicting the Next Word" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/465.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=1HYqhKhd%2BLsikNnCU8VVlRgHh1mLhzuthwgLJTQnwLw%3D" /></p>
+<p>Here is a simple example in Python using PyTorch to predict the next word:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn  
+import torch.nn.functional as F
+
+# Define the model  
+class NextWordPredictor(nn.Module):  
+    def __init__(self, vocab_size, embed_size, hidden_size):  
+        super(NextWordPredictor, self).__init__()  
+        self.embedding = nn.Embedding(vocab_size, embed_size)  
+        self.lstm = nn.LSTM(embed_size, hidden_size, batch_first=True)  
+        self.fc = nn.Linear(hidden_size, vocab_size)
+
+    def forward(self, x):  
+        x = self.embedding(x)  
+        x, _ = self.lstm(x)  
+        x = self.fc(x[:, -1, :])  
+        return x
+
+# Example usage  
+vocab_size = 10000  
+embed_size = 128  
+hidden_size = 256  
+model = NextWordPredictor(vocab_size, embed_size, hidden_size)
+
+# Example input (batch of tokenized sequences)  
+input_seq = torch.LongTensor([[1, 2, 3, 4], [2, 3, 4, 5]])  
+output = model(input_seq)  
+predicted_word = torch.argmax(F.softmax(output, dim=1), dim=1)  
+print(predicted_word)  
+</code></pre>
+<p>This script defines a simple LSTM-based model to predict the next word in a sequence. The <code>NextWordPredictor</code> class includes an embedding layer, an LSTM layer, and a fully connected layer to output the predicted next word.</p>
+<p>By thoroughly understanding these concepts, you'll be better equipped to delve into more complex topics such as the internal workings of transformers, attention mechanisms, and how they revolutionize tasks in natural language processing and beyond.  </p>
+<h3 id="intuition-pattern-recognition">Intuition and Pattern Recognition in Machine Learning<a class="anchor" id="intuition-pattern-recognition"></a></h3>
+<p>Machine learning is often employed for tasks that require an element of <strong>intuition</strong> and <strong>pattern recognition</strong>. Rather than explicitly defining a procedure in code, machine learning models use a flexible structure with tunable parameters. These parameters are adjusted using many examples of the desired output for a given input. This approach is a departure from the earliest days of AI, where explicit rules were predefined.</p>
+<h3 id="linear-regression">Linear Regression: The Simplest Form of Machine Learning<a class="anchor" id="linear-regression"></a></h3>
+<p>Perhaps the simplest form of machine learning is <strong>linear regression</strong>, where both inputs and outputs are single numbers. For instance, predicting house prices based on square footage. Here, the goal is to find a line of best fit through the data, described by two continuous parameters: the slope and the y-intercept.</p>
+<pre><code class="language-python">import numpy as np  
+from sklearn.linear_model import LinearRegression  
+import matplotlib.pyplot as plt
+
+# Example data  
+square_footage = np.array([1500, 1600, 1700, 1800, 1900]).reshape(-1, 1)  
+house_prices = np.array([300000, 320000, 340000, 360000, 380000])
+
+# Linear regression model  
+model = LinearRegression()  
+model.fit(square_footage, house_prices)
+
+# Predict future house prices  
+future_square_footage = np.array([2000, 2100]).reshape(-1, 1)  
+predicted_prices = model.predict(future_square_footage)
+
+# Plotting  
+plt.scatter(square_footage, house_prices, color='blue')  
+plt.plot(future_square_footage, predicted_prices, color='red')  
+plt.xlabel('Square Footage')  
+plt.ylabel('House Prices')  
+plt.title('Linear Regression: Square Footage vs. House Prices')  
+plt.show()  
+</code></pre>
+<p>This simple linear regression model predicts house prices based on square footage, illustrating how basic machine learning models adjust parameters to match data.</p>
+<p><img alt="Linear Regression" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/505.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Vu70hFaW6Nz8eqRxv0C5T%2B4O6wX%2B/xQYQvXrWA3td30%3D" /></p>
+<h3 id="deep-learning-scaling-up">Deep Learning: Scaling Up<a class="anchor" id="deep-learning-scaling-up"></a></h3>
+<p>Deep learning models, like GPT-3, are vastly more complex. Instead of two parameters, GPT-3 has a staggering <strong>175 billion parameters</strong>. This complexity enables deep learning models to handle a wide range of tasks with significant accuracy.</p>
+<p><img alt="GPT-3 Parameters" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/505.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Vu70hFaW6Nz8eqRxv0C5T%2B4O6wX%2B/xQYQvXrWA3td30%3D" /></p>
+<h3 id="scale-gpt3">The Scale of GPT-3<a class="anchor" id="scale-gpt3"></a></h3>
+<p>Here's a quick overview of GPT-3's scale:<br />
+- <strong>Total parameters</strong>: 156,495,287,091</p>
+<p>This immense scale allows GPT-3 to perform a wide array of tasks, from text generation to language translation, with remarkable proficiency.</p>
+<h3 id="core-concepts">Core Concepts in Modern Machine Learning<a class="anchor" id="core-concepts"></a></h3>
+<p>To better understand the advanced concepts, let's recap some core ideas:<br />
+1. <strong>Data Representation</strong>: Input data needs to be represented in a numerical format.<br />
+2. <strong>Model Architecture</strong>: The structure of the model, such as layers in neural networks.<br />
+3. <strong>Training</strong>: The process of adjusting parameters using training data.<br />
+4. <strong>Evaluation</strong>: Assessing the model's performance on unseen data.</p>
+<p>These concepts are fundamental to both simple models like linear regression and complex models like GPT-3.</p>
+<h3 id="training-deep-learning">Training Deep Learning Models<a class="anchor" id="training-deep-learning"></a></h3>
+<p>Training deep learning models involves several steps:<br />
+1. <strong>Data Collection</strong>: Gathering a large dataset.<br />
+2. <strong>Preprocessing</strong>: Cleaning and preparing the data.<br />
+3. <strong>Model Initialization</strong>: Setting up the neural network with initial parameters.<br />
+4. <strong>Forward Pass</strong>: Passing data through the model to get predictions.<br />
+5. <strong>Loss Calculation</strong>: Measuring the error between predictions and actual values.<br />
+6. <strong>Backward Pass</strong>: Adjusting parameters to minimize the error.<br />
+7. <strong>Iteration</strong>: Repeating the process for multiple epochs until the model converges.</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn  
+import torch.optim as optim
+
+# Example neural network for a simple task  
+class SimpleNN(nn.Module):  
+    def __init__(self):  
+        super(SimpleNN, self).__init__()  
+        self.fc1 = nn.Linear(10, 50)  
+        self.fc2 = nn.Linear(50, 1)
+
+    def forward(self, x):  
+        x = torch.relu(self.fc1(x))  
+        x = self.fc2(x)  
+        return x
+
+# Training the model  
+model = SimpleNN()  
+criterion = nn.MSELoss()  
+optimizer = optim.SGD(model.parameters(), lr=0.01)
+
+# Dummy data  
+inputs = torch.randn(100, 10)  
+targets = torch.randn(100, 1)
+
+# Training loop  
+for epoch in range(100):  
+    optimizer.zero_grad()  
+    outputs = model(inputs)  
+    loss = criterion(outputs, targets)  
+    loss.backward()  
+    optimizer.step()
+
+    if epoch % 10 == 0:  
+        print(f'Epoch {epoch}, Loss: {loss.item()}')  
+</code></pre>
+<p>This script demonstrates the training process for a simple neural network, highlighting the <strong>forward pass</strong>, <strong>loss calculation</strong>, and <strong>backward pass</strong>.</p>
+<p>By understanding these concepts and processes, we can appreciate the complexities and capabilities of modern machine learning and deep learning models.  </p>
+<h3 id="training-large-models">Understanding the Challenges of Training Large Models<a class="anchor" id="training-large-models"></a></h3>
+<p>It's not a given that you can create some giant model with a huge number of parameters,</p>
+<p><img alt="Model Parameters Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/540.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=6vYJdhtZSpfq43O/CaDizwF7f8JTjIQgFrs2KtuZ7/o%3D" /></p>
+<p>without either grossly overfitting the training data or being completely intractable to train. Deep learning describes a class of models that, in the last couple of decades, have proven to scale remarkably well.</p>
+<p><img alt="Deep Learning Scaling" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/555.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=yH%2Bo13OlwyhFs6Vn0rA5ktwKnngwl51zTw/oKQtoCzc%3D" /></p>
+<h3 id="backpropagation">The Role of Backpropagation in Deep Learning<a class="anchor" id="backpropagation"></a></h3>
+<p>What unifies these models is that they all use the same training algorithm: <strong>backpropagation</strong>. We discussed this in previous chapters, and the context I want you to have as we go in is that, in order for this training algorithm to work well at scale, these models have to follow a certain specific format.</p>
+<p><img alt="Backpropagation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/560.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=%2BYrBwq15p5Ysfs1ZLmNBaSLjpZeOX8cFW2WVeXj0jec%3D" /></p>
+<p>If you know this format going in, it helps to explain many of the choices for how a transformer processes language, which otherwise run the risk of feeling kind of arbitrary. </p>
+<h3 id="data-representation">Data Representation and Transformation<a class="anchor" id="data-representation"></a></h3>
+<p>First, whatever kind of model you're making, the input has to be formatted as an array of real numbers. </p>
+<p><img alt="Data Transformation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/570.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=507w4uhgYg6MQALNM0C/s6jtSKtwdPhEgi/FUN09YlM%3D" /></p>
+<p>This could simply mean a list of numbers, a two-dimensional array, or very often, higher-dimensional arrays, where the general term used is <strong>tensor</strong>. </p>
+<p>You often think of that input data as being progressively transformed into many distinct layers, where again, each layer is always:</p>
+<p><img alt="Layers Transformation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/585.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/8LyBrLZmAlbTAfWjNP537uYW%2BKqLn8q0VJP6Pe5bEA%3D" /></p>
+<pre><code class="language-python">import numpy as np
+
+# Dummy data  
+input_data = np.array([[1, 2], [3, 4], [5, 6]])
+
+# Dummy transformation  
+def transform(data):  
+    return data * 2
+
+# Apply transformation  
+transformed_data = transform(input_data)  
+print(transformed_data)
+
+# Output:  
+# [[ 2  4]  
+#  [ 6  8]  
+#  [10 12]]  
+</code></pre>
+<h3 id="transforming-layers">Transforming Layers<a class="anchor" id="transforming-layers"></a></h3>
+<p>Layers in a neural network progressively transform input data into more abstract representations. Each layer's transformation is crucial for the model's performance:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example neural network layer  
+class SimpleLayer(nn.Module):  
+    def __init__(self):  
+        super(SimpleLayer, self).__init__()  
+        self.layer = nn.Linear(10, 50)  
+
+    def forward(self, x):  
+        return torch.relu(self.layer(x))
+
+# Initialize layer  
+layer = SimpleLayer()
+
+# Dummy input  
+input_tensor = torch.randn(1, 10)
+
+# Forward pass  
+output_tensor = layer(input_tensor)  
+print(output_tensor)
+
+# Output:  
+# tensor([[0.0000, 0.0000, ..., 0.0000]], grad_fn=&lt;ReluBackward1&gt;)  
+</code></pre>
+<h3 id="key-takeaways">Key Takeaways<a class="anchor" id="key-takeaways"></a></h3>
+<p>To summarize the critical points:<br />
+- <strong>Backpropagation</strong> is essential for training deep learning models.<br />
+- <strong>Data representation</strong> as real numbers or tensors is crucial for processing by neural networks.<br />
+- <strong>Layer transformations</strong> progressively abstract input data, enabling complex model behaviors.</p>
+<p>By understanding these foundational concepts, we can better appreciate the intricacies of modern deep learning and its applications.  </p>
+<h3 id="training-large-models">Understanding the Challenges of Training Large Models<a class="anchor" id="training-large-models"></a></h3>
+<p>It's not a given that you can create some giant model with a huge number of parameters,</p>
+<p><img alt="Model Parameters Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/540.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=6vYJdhtZSpfq43O/CaDizwF7f8JTjIQgFrs2KtuZ7/o%3D" /></p>
+<p>without either grossly overfitting the training data or being completely intractable to train. Deep learning describes a class of models that, in the last couple of decades, have proven to scale remarkably well.</p>
+<p><img alt="Deep Learning Scaling" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/555.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=yH%2Bo13OlwyhFs6Vn0rA5ktwKnngwl51zTw/oKQtoCzc%3D" /></p>
+<h3 id="backpropagation">The Role of Backpropagation in Deep Learning<a class="anchor" id="backpropagation"></a></h3>
+<p>What unifies these models is that they all use the same training algorithm: <strong>backpropagation</strong>. We discussed this in previous chapters, and the context I want you to have as we go in is that, in order for this training algorithm to work well at scale, these models have to follow a certain specific format.</p>
+<p><img alt="Backpropagation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/560.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=%2BYrBwq15p5Ysfs1ZLmNBaSLjpZeOX8cFW2WVeXj0jec%3D" /></p>
+<p>If you know this format going in, it helps to explain many of the choices for how a transformer processes language, which otherwise run the risk of feeling kind of arbitrary. </p>
+<h3 id="data-representation">Data Representation and Transformation<a class="anchor" id="data-representation"></a></h3>
+<p>First, whatever kind of model you're making, the input has to be formatted as an array of real numbers. </p>
+<p><img alt="Data Transformation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/570.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=507w4uhgYg6MQALNM0C/s6jtSKtwdPhEgi/FUN09YlM%3D" /></p>
+<p>This could simply mean a list of numbers, a two-dimensional array, or very often, higher-dimensional arrays, where the general term used is <strong>tensor</strong>. </p>
+<p>You often think of that input data as being progressively transformed into many distinct layers, where again, each layer is always:</p>
+<p><img alt="Layers Transformation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/585.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/8LyBrLZmAlbTAfWjNP537uYW%2BKqLn8q0VJP6Pe5bEA%3D" /></p>
+<pre><code class="language-python">import numpy as np
+
+# Dummy data  
+input_data = np.array([[1, 2], [3, 4], [5, 6]])
+
+# Dummy transformation  
+def transform(data):  
+    return data * 2
+
+# Apply transformation  
+transformed_data = transform(input_data)  
+print(transformed_data)
+
+# Output:  
+# [[ 2  4]  
+#  [ 6  8]  
+#  [10 12]]  
+</code></pre>
+<h3 id="transforming-layers">Transforming Layers<a class="anchor" id="transforming-layers"></a></h3>
+<p>Layers in a neural network progressively transform input data into more abstract representations. Each layer's transformation is crucial for the model's performance:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example neural network layer  
+class SimpleLayer(nn.Module):  
+    def __init__(self):  
+        super(SimpleLayer, self).__init__()  
+        self.layer = nn.Linear(10, 50)  
+
+    def forward(self, x):  
+        return torch.relu(self.layer(x))
+
+# Initialize layer  
+layer = SimpleLayer()
+
+# Dummy input  
+input_tensor = torch.randn(1, 10)
+
+# Forward pass  
+output_tensor = layer(input_tensor)  
+print(output_tensor)
+
+# Output:  
+# tensor([[0.0000, 0.0000, ..., 0.0000]], grad_fn=&lt;ReluBackward1&gt;)  
+</code></pre>
+<h3 id="key-takeaways">Key Takeaways<a class="anchor" id="key-takeaways"></a></h3>
+<p>To summarize the critical points:<br />
+- <strong>Backpropagation</strong> is essential for training deep learning models.<br />
+- <strong>Data representation</strong> as real numbers or tensors is crucial for processing by neural networks.<br />
+- <strong>Layer transformations</strong> progressively abstract input data, enabling complex model behaviors.</p>
+<p>By understanding these foundational concepts, we can better appreciate the intricacies of modern deep learning and its applications.</p>
+<h3 id="structured-data">Structured Data as Real Numbers<a class="anchor" id="structured-data"></a></h3>
+<p>In deep learning, the input data is often <strong>structured as some kind of array of real numbers</strong> until you get to a final layer, which you consider the output. For example, the final layer in our text processing model is a list of numbers:</p>
+<p><img alt="Model Output" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/610.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=nkrNrUlxnDJ9/OUuPr8NQg/IxmwP//Lw5grTEMcgxr0%3D" /></p>
+<p>This list of numbers represents the <strong>probability distribution for all possible next tokens</strong>. In deep learning, these model parameters are almost always referred to as <strong>weights</strong>. </p>
+<p><img alt="Model Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/615.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=A8wwA1F5R8vIxLptSbWFAH5gNz/Tt5Sh2cFz9iflnVE%3D" /></p>
+<p>This is because a key feature of these models is that the <strong>only way these parameters interact with the data being processed is through weighted sums</strong>. You also sprinkle some nonlinear functions throughout, but they won't depend on parameters. </p>
+<p><img alt="Weighted Sums" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/620.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=uepx7D2uzIbMZEnrOaAFmzLf1mkKv14lf6%2BU0r8Fgf4%3D" /></p>
+<p>Typically, though, instead of seeing the weighted sums all naked and written out explicitly like this, you'll instead find them packaged together as various components in a <strong>matrix vector product</strong>. It amounts to saying the same thing if you think back to how matrix-vector multiplication works, each component in the output looks like a weighted sum.</p>
+<p><img alt="Matrix Vector Product" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/645.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=lIiZ%2B2yXswTGoTFJKnB1U4Wde2LC0zPnm9kxhWkubew%3D" /></p>
+<p>It's just often conceptually cleaner for you and me to think about matrices that are filled with tunable parameters that transform vectors that are drawn from the data being processed. For example, those <strong>175 billion weights in GPT-3</strong> are organized into just under <strong>28,000 distinct matrices</strong>.</p>
+<p><img alt="GPT-3 Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/670.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=T8Kv4LPbpl3ZH7eBCeboTSW5ZrYtYmLjjSJ8TAG%2BMPY%3D" />  </p>
+<h3 id="matrices-in-large-language-models">Matrices in Large Language Models<a class="anchor" id="matrices-in-large-language-models"></a></h3>
+<p>Those matrices in turn fall into eight different categories. And what you and I are going to do is step through each one of those categories to understand what that type does. </p>
+<p><img alt="Matrix Categories" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/675.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=vlJRMjX32kSkVNSMrC6ll3xmeGSDBsI%2B42yFd1T3gHw%3D" /></p>
+<p>As we go through, I think it's kind of fun to reference the specific numbers from GPT-3 to count up exactly where those <strong>175 billion parameters</strong> come from. Even if nowadays, there are bigger and better models, this one has a certain charm as the first large language model to really capture the world's attention outside of ML communities.</p>
+<p><img alt="GPT-3 Parameters" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/680.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=zZcp652Pb2P1h1lTDz9rq3xYZKoYjs9OgaLtT9qIszU%3D" /></p>
+<h3 id="gpt-3-parameters">Understanding GPT-3's Parameters<a class="anchor" id="gpt-3-parameters"></a></h3>
+<p>Also, practically speaking, companies tend to keep much tighter lips around the specific numbers for more modern networks. I just want to set the scene going in. As you peek under the hood to see what happens inside a tool like ChatGPT, almost all of the actual computation looks like <strong>matrix-vector multiplication</strong>.</p>
+<p><img alt="Matrix Vector Multiplication" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/685.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=crn3nWDdIlVzBdW/fClosvrK9LJaIAXc1q4CrjYy9y0%3D" /></p>
+<p>There's a little bit of a risk getting lost in the sea of billions of numbers, but you should draw a very sharp distinction in your mind between the <strong>weights of the model</strong>, which I'll always color in blue or red.</p>
+<p><img alt="Model Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/695.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=pvd2ifVlHxxfZxlNzv4OB0yKVw3o5xsUMRAXXqyTBNQ%3D" /></p>
+<h3 id="weights-and-computation">Weights and Computation<a class="anchor" id="weights-and-computation"></a></h3>
+<p>Here’s a brief breakdown of the primary types of matrices you'll encounter in these models:</p>
+<ul>
+<li><strong>Embedding Matrices</strong>: These map input tokens to high-dimensional vectors.  </li>
+<li><strong>Attention Matrices</strong>: Used in self-attention mechanisms to calculate the attention scores.  </li>
+<li><strong>Feedforward Matrices</strong>: Process the output from the attention layer.  </li>
+<li><strong>Layer Norm Matrices</strong>: Normalize the output from previous layers.</li>
+</ul>
+<p>We will delve deeper into each of these categories, starting with the embedding matrices.</p>
+<h3 id="embedding-matrices">Embedding Matrices<a class="anchor" id="embedding-matrices"></a></h3>
+<h4>Concept</h4>
+<p>Embedding matrices are the initial step in processing input data. They transform tokens into high-dimensional vectors that can be processed by the neural network.</p>
+<h4>Example</h4>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example embedding layer  
+class SimpleEmbedding(nn.Module):  
+    def __init__(self, vocab_size, embed_size):  
+        super(SimpleEmbedding, self).__init__()  
+        self.embedding = nn.Embedding(vocab_size, embed_size)  
+
+    def forward(self, x):  
+        return self.embedding(x)
+
+# Initialize embedding layer  
+vocab_size = 10000  # Example vocabulary size  
+embed_size = 512    # Example embedding size  
+embedding_layer = SimpleEmbedding(vocab_size, embed_size)
+
+# Dummy input  
+input_tokens = torch.randint(0, vocab_size, (1, 10))
+
+# Forward pass  
+embedded_tokens = embedding_layer(input_tokens)  
+print(embedded_tokens)
+
+# Output:   
+# tensor([[[ 0.1234, -0.5678, ..., 0.2345], ...]])  
+</code></pre>
+<h3 id="attention-matrices">Attention Matrices<a class="anchor" id="attention-matrices"></a></h3>
+<p><img alt="Attention Mechanism" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/700.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=woY7B/swlYK2dTlfgejQKTY7nLioiXjC7zZUsv5pySs%3D" /></p>
+<h4>Concept</h4>
+<p>Attention matrices are fundamental in the self-attention mechanism of transformers. They calculate the relevance of each token in a sequence to every other token, enabling the model to focus on significant parts of the input sequence.</p>
+<h4>Example</h4>
+<pre><code class="language-python">import torch  
+import torch.nn.functional as F
+
+# Example attention mechanism  
+def attention(query, key, value):  
+    scores = torch.matmul(query, key.transpose(-2, -1)) / query.size(-1)**0.5  
+    weights = F.softmax(scores, dim=-1)  
+    return torch.matmul(weights, value)
+
+# Dummy input  
+query = torch.randn(1, 10, 64)  
+key = torch.randn(1, 10, 64)  
+value = torch.randn(1, 10, 64)
+
+# Apply attention  
+output = attention(query, key, value)  
+print(output)
+
+# Output:   
+# tensor([[[ 0.1234, -0.5678, ..., 0.2345], ...]])  
+</code></pre>
+<h3 id="feedforward-matrices">Feedforward Matrices<a class="anchor" id="feedforward-matrices"></a></h3>
+<p><img alt="Feedforward Network" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/710.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=vW27uKe%2BJkY6NstPHqVcnremMjif8JeFLpeW11XzbEQ%3D" /></p>
+<h4>Concept</h4>
+<p>Feedforward matrices process the output from the attention layers. These matrices are used in linear layers to apply transformations to the data, contributing to the depth and complexity of the model.</p>
+<h4>Example</h4>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example feedforward network  
+class FeedForward(nn.Module):  
+    def __init__(self, input_size, hidden_size, output_size):  
+        super(FeedForward, self).__init__()  
+        self.fc1 = nn.Linear(input_size, hidden_size)  
+        self.fc2 = nn.Linear(hidden_size, output_size)  
+
+    def forward(self, x):  
+        x = torch.relu(self.fc1(x))  
+        return self.fc2(x)
+
+# Initialize feedforward network  
+input_size = 64  
+hidden_size = 256  
+output_size = 64  
+network = FeedForward(input_size, hidden_size, output_size)
+
+# Dummy input  
+input_tensor = torch.randn(1, 10, input_size)
+
+# Forward pass  
+output_tensor = network(input_tensor)  
+print(output_tensor)
+
+# Output:   
+# tensor([[[ 0.1234, -0.5678, ..., 0.2345], ...]])  
+</code></pre>
+<h3 id="layer-norm-matrices">Layer Norm Matrices<a class="anchor" id="layer-norm-matrices"></a></h3>
+<p>Layer normalization matrices are used to normalize the outputs from previous layers. This helps stabilize and accelerate the training process.</p>
+<p><img alt="Layer Normalization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/715.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=WUYwFu8I9P3aFxELWT2VxjpoPmNBCZEpzC1LxWzApH0%3D" /></p>
+<h4>Example</h4>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example layer normalization  
+class SimpleLayerNorm(nn.Module):  
+    def __init__(self, hidden_size):  
+        super(SimpleLayerNorm, self).__init__()  
+        self.layer_norm = nn.LayerNorm(hidden_size)  
+
+    def forward(self, x):  
+        return self.layer_norm(x)
+
+# Initialize layer normalization  
+hidden_size = 64  
+layer_norm = SimpleLayerNorm(hidden_size)
+
+# Dummy input  
+input_tensor = torch.randn(1, 10, hidden_size)
+
+# Forward pass  
+normalized_tensor = layer_norm(input_tensor)  
+print(normalized_tensor)
+
+# Output:   
+# tensor([[[ 0.1234, -0.5678, ..., 0.2345], ...]])  
+</code></pre>
+<h3 id="key-points">Key Points to Remember<a class="anchor" id="key-points"></a></h3>
+<ul>
+<li><strong>Embedding Matrices</strong>: Map tokens to high-dimensional vectors.  </li>
+<li><strong>Attention Matrices</strong>: Calculate token relevance in sequences.  </li>
+<li><strong>Feedforward Matrices</strong>: Transform data output from attention layers.  </li>
+<li><strong>Layer Norm Matrices</strong>: Normalize outputs to stabilize training.</li>
+</ul>
+<p>By understanding these different components, we can better appreciate the complexity and functionality of models like GPT-3.  </p>
+<h3 id="weights-and-data">The Role of Weights and Data in LLMs<a class="anchor" id="weights-and-data"></a></h3>
+<p>In the intricate dance of large language models, the <strong>weights</strong> are the critical components that determine how the model behaves. These weights, learned during training, are essentially the "brains" of the model. They dictate how the model processes input data, which is the <strong>data being processed</strong>.</p>
+<p><img alt="Weight and Data Illustration" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/730.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=cInds3Rg0trrdKm/QXh75YqYldznBlLsJR4ddjlOpXQ%3D" /></p>
+<p>The input data, often represented in gray, encodes the specific text or other types of input fed into the model for a particular run. This data is transformed and interpreted based on the learned weights, allowing the model to generate meaningful outputs.</p>
+<p><img alt="Data Processing Example" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/735.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=7bJNkVirmnBhkm4lxQceERxnJS4%2B846y2bJVwG7SQQc%3D" /></p>
+<h3 id="text-processing-tokenization">Text Processing and Tokenization<a class="anchor" id="text-processing-tokenization"></a></h3>
+<p>The first step in processing input text involves breaking it up into smaller chunks and turning these chunks into vectors. These chunks, known as <strong>tokens</strong>, might be pieces of words or punctuation. For simplicity, let's sometimes assume that the text is broken more cleanly into words, as this makes it easier to reference examples and clarify each step.</p>
+<p><img alt="Text Processing Flow" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/750.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=CzkPXeCzcMW%2BeATb3jk7q9lqhiif%2BAiZdmaryHp6HtI%3D" /></p>
+<h3 id="embedding-matrix">The Embedding Matrix<a class="anchor" id="embedding-matrix"></a></h3>
+<p>The model has a predefined vocabulary, a list of all possible words or tokens (e.g., 50,000). The first matrix that encounters these tokens is the <strong>embedding matrix</strong>. This matrix maps each token to a high-dimensional vector.</p>
+<p><img alt="Embedding Matrix" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/755.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Fric8u5vzTGdAv4QqrqQ6OG2QYMfNiye6RVdXY705qE%3D" /></p>
+<h4>Example of an Embedding Matrix</h4>
+<p>Here's a simple example to illustrate how an embedding matrix works:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Example embedding layer  
+class SimpleEmbedding(nn.Module):  
+    def __init__(self, vocab_size, embed_size):  
+        super(SimpleEmbedding, self).__init__()  
+        self.embedding = nn.Embedding(vocab_size, embed_size)  
+
+    def forward(self, x):  
+        return self.embedding(x)
+
+# Initialize embedding layer  
+vocab_size = 50000  # Example vocabulary size  
+embed_size = 512    # Example embedding size  
+embedding_layer = SimpleEmbedding(vocab_size, embed_size)
+
+# Dummy input  
+input_tokens = torch.randint(0, vocab_size, (1, 10))
+
+# Forward pass  
+embedded_tokens = embedding_layer(input_tokens)  
+print(embedded_tokens)
+
+# Output:   
+# tensor([[[ 0.1234, -0.5678, ..., 0.2345], ...]])  
+</code></pre>
+<p>In this example:<br />
+- The <strong>vocabulary size</strong> is 50,000.<br />
+- The <strong>embedding size</strong> is 512.<br />
+- The <code>input_tokens</code> tensor contains a batch of 10 tokens.</p>
+<p>The <code>embedding_layer</code> transforms these tokens into high-dimensional vectors, which are then used by the model for further processing.</p>
+<h3 id="vocabulary-tokenization">Vocabulary and Tokenization<a class="anchor" id="vocabulary-tokenization"></a></h3>
+<p>The predefined vocabulary is crucial for the tokenization process. Each token in the input text is mapped to an index in this vocabulary. The embedding matrix then uses these indices to look up the corresponding high-dimensional vectors.</p>
+<p><img alt="Embedding Matrix Lookup" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/780.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=7bPpe%2Ba0LRLYbDgug/SuVR1qtrmDSqX9XhEqoVgtbRU%3D" /></p>
+<h4>Detailed Example</h4>
+<p>Consider the following detailed example where the embedding matrix has a single column for simplicity:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Simplified example embedding layer with single column  
+class SimpleEmbedding(nn.Module):  
+    def __init__(self, vocab_size):  
+        super(SimpleEmbedding, self).__init__()  
+        self.embedding = nn.Embedding(vocab_size, 1)  
+
+    def forward(self, x):  
+        return self.embedding(x)
+
+# Initialize embedding layer  
+vocab_size = 50000  # Example vocabulary size  
+embedding_layer = SimpleEmbedding(vocab_size)
+
+# Dummy input  
+input_tokens = torch.randint(0, vocab_size, (1, 10))
+
+# Forward pass  
+embedded_tokens = embedding_layer(input_tokens)  
+print(embedded_tokens)
+
+# Output:   
+# tensor([[[0.1234], [0.5678], ..., [0.2345]], ...])  
+</code></pre>
+<p>In this case:<br />
+- The embedding matrix has a single column, simplifying the lookup process.<br />
+- The <code>input_tokens</code> tensor contains a batch of 10 tokens.<br />
+- The <code>embedding_layer</code> transforms these tokens into a list of scalar values.</p>
+<p><img alt="Simplified Embedding Matrix" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/785.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ESj2ToNR4zaZ1nw/1ehfyodFttfmr7%2B8Gw2B7PzhvqU%3D" /></p>
+<p>By understanding how the embedding matrix works and its role in tokenization, we can better appreciate the complexity and functionality of large language models. The embedding matrix is the gateway through which raw input data is transformed into a format that the neural network can effectively process.  </p>
+<h3 id="token-embeddings">Token Embeddings<a class="anchor" id="token-embeddings"></a></h3>
+<p>In the context of token embeddings, each word or token in the vocabulary has a corresponding column vector in the embedding matrix. These columns determine the vector representation of each word, a crucial step in transforming the input into a format the model can process.</p>
+<p><img alt="Embedding Matrix Representation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/790.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=MRvHEIrdayrDWeS8gJAXdZ8fNWT6wBU/haX0RZk29yk%3D" /></p>
+<p>These initial vectors, labeled as <strong>WE</strong> (Word Embeddings), begin with random values. Over time and through the training process, they are adjusted based on the data.</p>
+<p><img alt="Random Value Initialization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/795.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=38SZ2q46y2Ka6g4MSX76llxtVzhI4kFD%2ByXWWcWE9/U%3D" /></p>
+<h3 id="learning-word-vectors">Learning Word Vectors<a class="anchor" id="learning-word-vectors"></a></h3>
+<p>The process of turning words into vectors is not novel to transformers and has been a common practice in machine learning for quite some time. However, if you are new to this concept, it might seem a bit unusual.</p>
+<p><img alt="Initial Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/800.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Z7MVqKHNvHOuWAChEWV8p40s2gAztoyCSvTYLDsJtMg%3D" /></p>
+<h3 id="embedding-space">Embedding Space<a class="anchor" id="embedding-space"></a></h3>
+<p>This embedding process lays the foundation for everything that follows in the model. It's essential to get acquainted with it, as it involves understanding these vectors geometrically as points in a high-dimensional space.</p>
+<p><img alt="Embedding Familiarization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/805.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=OJkSTTiNFMu3Wy1EL0sFprMHaKgDOdTzeooNBWLrRmk%3D" /></p>
+<p>Visualizing word embeddings can be challenging due to their high dimensionality. For instance, in GPT-3, the embeddings have 12,288 dimensions. </p>
+<p><img alt="High Dimensional Space" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/810.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ezZtirO0HsPZzzWY%2B0zrEyWaAmTnyCjt70aexCRMJvw%3D" /></p>
+<h3 id="higher-dimensionality">Higher Dimensionality in Embeddings<a class="anchor" id="higher-dimensionality"></a></h3>
+<p>The high dimensionality in embeddings is crucial because it provides a lot of distinct directions. This is similar to taking a two-dimensional slice through a three-dimensional space and projecting all points onto that slice.</p>
+<p><img alt="High Dimensional Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/815.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=rsPqM8cNHTfqbquGuQEuMsGCWKpzstbVKSJdBtbC1Uk%3D" /></p>
+<p>For animation purposes, one might choose a three-dimensional representation to simplify the visualization, even though the actual embeddings operate in a much higher-dimensional space.</p>
+<p><img alt="Three-Dimensional Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/830.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=bkbtxEdy0T3DhOuELclfQXi%2BuPrRkIviJTzYNC0cAh4%3D" /></p>
+<h3 id="importance-high-dimensional-space">Importance of High-Dimensional Space<a class="anchor" id="importance-high-dimensional-space"></a></h3>
+<p>The significance of working in a space with many dimensions cannot be overstated. In GPT-3, the 12,288 dimensions allow for more nuanced and precise representations.</p>
+<p><img alt="High Dimensional Importance" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/835.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=sMPNqmNQOwd3lYgqrMSxrIf4o9hWHki0glCrVaVUjQE%3D" /></p>
+<p>Just as you can take a slice through a three-dimensional space, embedding vectors can be projected through lower dimensions for visualization purposes, but they inherently exist in a much higher-dimensional space.</p>
+<p><img alt="Dimensional Projection" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/840.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=x1e/Rz%2BmOavv2ACgpZ4s7Rj9UiIZ1x74caalgjwRWvw%3D" /></p>
+<h3 id="animating-word-embeddings">Animating Word Embeddings<a class="anchor" id="animating-word-embeddings"></a></h3>
+<p>To animate word embeddings from a simple model, one can choose a three-dimensional slice through the high-dimensional space to make the visualization comprehensible.</p>
+<p><img alt="Animating Word Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/845.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=cecfGpgSs3W94ENJpLLV0ZnUEO%2B/uru/6Uky34e4Zt4%3D" /></p>
+<p>By understanding these foundational concepts, we can appreciate how each token's position in the embedding space influences its interpretation by the model. This positional awareness in high-dimensional space is fundamental to the functioning of transformers and large language models.</p>
+<p><img alt="Embedding Space Representation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/850.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=xaJFfnpnD%2Bi4RlOs%2BJFbw2UiOPWZTCYZYHkS2BHH/Us%3D" />  </p>
+<h3 id="embedding-space-projections">Embedding Space Projections<a class="anchor" id="embedding-space-projections"></a></h3>
+<p>When dealing with the high-dimensional space of embeddings, a common technique is to <strong>slice through this very high-dimensional space</strong> and project the word vectors down onto that:</p>
+<p><img alt="High Dimensional Space Projection" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/855.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ERWQyKieB%2B8nhKDzI74EnFj3VDf9LSy5hAG%2BfoPYMSo%3D" /></p>
+<p>This projection helps in <strong>visualizing</strong> and displaying the results. The big idea here is that as a model <strong>tweaks and tunes its weights</strong>:</p>
+<p><img alt="Model Tuning Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/860.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=55ig9SjY78w2IN/0pMLDC1gx5MgLED2jQS7Lg8zAmog%3D" /></p>
+<p><img alt="Weight Adjustment Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/865.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=XPfatDZNuFsZn/W6Xb6EiOvglVKBAiQprlPBhlKCvrw%3D" /></p>
+<p><strong>to determine</strong> how exactly words get embedded as vectors during training, it tends to settle on a:</p>
+<p><img alt="Embedding Determination" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/870.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=RDuNn7KdIGJxf7LNgt4W1DR55PxYEIYDtvbm81JcEOQ%3D" /></p>
+<p><strong>set of embeddings</strong> where directions in the space have a kind of semantic meaning. For example, in a simple word-to-vector model:</p>
+<p><img alt="Semantic Meaning in Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/875.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=sHTWpWfs1GaT3VOTFJAf834KIz4l%2BaeoZqXRzKzgjTM%3D" /></p>
+<p>If we run a search for all the words whose embeddings are closest to that of “tower,” you'll notice how they all exhibit very similar <strong>tower-ish vibes</strong>.</p>
+<p><img alt="Search for Closest Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/880.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=2bjRCIdg81ZqJjlRSzUgSV9mNkiwa086x7MGMGi97Zo%3D" /></p>
+<p><img alt="Similar Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/885.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=WwgU9uyD/YthYAI%2BBqlrTozzf%2BTqY1iQfRrRmVcRHwo%3D" /></p>
+<p>And if you want to pull up some Python and play along at home, this is the specific model:</p>
+<p><img alt="Model for Animation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/890.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=JrfGWTV85sLtXmXlt/hQfB44w188gEAijY6XogFf22M%3D" /></p>
+<p>that I’m using to make the animations. It’s not a transformer, but it’s enough to illustrate the idea that <strong>directions in the space can carry semantic meaning</strong>. A very classic example of this is how:</p>
+<p><img alt="Classic Example of Semantic Meaning" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/895.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=RSqwD4SQEChLwVUGebqo9oqEiVV%2BUnNEaR7Maw5BYD4%3D" /></p>
+<p><img alt="Semantic Directions" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/900.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=OmKGdkb7ZSaev7hbDHVeLqHzx6TzgUrzFy8kosGTDws%3D" /></p>
+<p>if you take the difference between the vectors for <strong>woman and man</strong>, something you would visualize:</p>
+<p><img alt="Vector Difference Visualization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/905.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/8ie%2BpU6G77rFBMbemc8fIpilGufitMw2xFWSYduo54%3D" /></p>
+<p>as a little vector in the space connecting the tip of one to the tip of the other, it’s very similar:</p>
+<p><img alt="Connecting Vectors" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/910.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=uoAG64P1ixiJNjWqPEIDX428tCCiyaQCHQdt07fENQc%3D" /></p>
+<p>This visualization can be a powerful tool for understanding how models interpret and utilize embeddings in high-dimensional space. Through such examples, we can appreciate the <strong>intricate relationships</strong> that embeddings capture and how they contribute to the <strong>semantic understanding</strong> in large language models.  </p>
+<h3 id="embedding-space-projections">Embedding Space Projections<a class="anchor" id="embedding-space-projections"></a></h3>
+<p>Continuing from our previous discussion on embeddings, let's dive deeper into the fascinating ways these embeddings capture semantic meanings and relationships.</p>
+<p>One classic example is the relationship between <strong>king</strong> and <strong>queen</strong>. If we visualize the embeddings, the difference between the vectors for "woman" and "man" is similar to the difference between "queen" and "king". This can be demonstrated as follows:</p>
+<p><img alt="Example with King and Queen" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/915.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=FWcNYWrHdk14%2BHfZ4O2cedWEAaqunYJ%2BNWA8DtSkOoE%3D" /></p>
+<h3 id="vector-arithmetic">Vector Arithmetic in Embeddings<a class="anchor" id="vector-arithmetic"></a></h3>
+<p>If you didn't know the word for a female monarch, you could find it by taking the embedding for "king," adding the "woman-man" direction, and searching for the embeddings closest to that point. This kind of <strong>vector arithmetic</strong> is a powerful tool for understanding and leveraging embeddings.</p>
+<p><img alt="Vector Arithmetic Example" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/920.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=jtCoT9iAxC9M%2BsCNUk4wIc0VdB5m9/kNiL9xCV%2B5Rks%3D" /></p>
+<h3 id="embedding-limitations">Embedding Limitations and Observations<a class="anchor" id="embedding-limitations"></a></h3>
+<p>However, it's important to note that while this is a <strong>classic example</strong>, the actual embeddings might not always align perfectly with this theoretical model. For instance, the true embedding of "queen" might be a bit farther off due to the way the word is used in training data, not merely as a feminine version of "king."</p>
+<p><img alt="Limitations in Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/930.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=PJhDZA%2B%2Bg%2BVt5PvNiPTWxoh1kSkFQSD/TF12F%2Bc/e6M%3D" /></p>
+<p>When exploring embeddings, family relations often illustrate these ideas better. The embeddings suggest that during training, the model found it advantageous to choose directions in the space that include gender information.</p>
+<p><img alt="Family Relations" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/935.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=up8ksnyIvfq9uveRyHYo8LwRumz/6rBPZ95WfMt3JE4%3D" /></p>
+<h3 id="gender-information">Gender Information in Embeddings<a class="anchor" id="gender-information"></a></h3>
+<p>The embeddings are such that one direction in this space includes <strong>gender information</strong>. This can be visualized with the following example:</p>
+<p><img alt="Gender Information Direction" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/945.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=3qOisxqKdxwW5AIo4dUj%2B/0oyO3D2J7TzC7HuDTOUhc%3D" /></p>
+<h3 id="country-leader-embeddings">Country and Leader Embeddings<a class="anchor" id="country-leader-embeddings"></a></h3>
+<p>Another example is the relationship between countries and their leaders. If you take the embedding of "Italy" and subtract the embedding of "Germany," then add that to the embedding of "Hitler," you get something very close to the embedding of "Mussolini." This suggests that the model has learned to associate certain directions with national identities and historical contexts.</p>
+<p><img alt="Country and Leader Example" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/950.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=JjicVwM/6uSLZJnPOxvAd5NowqUQzuVwAtZIHWuJdFI%3D" /></p>
+<p>In another playful example, if you take the difference between "Germany" and "Japan" and add it to "sushi," you end up very close to "bratwurst." This showcases the ability of embeddings to capture cultural and culinary associations.</p>
+<h3 id="nearest-neighbors">Nearest Neighbors in Embeddings<a class="anchor" id="nearest-neighbors"></a></h3>
+<p>Playing the game of finding nearest neighbors, I was delighted to see how close "cat" was to both "beast" and "monster." These relationships highlight how embeddings can capture nuanced meanings and associations.</p>
+<p><img alt="Nearest Neighbors Example" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/990.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=he7GMGPObfz8m7UmN9HGJ5txWAWXuzyN8zCBECxPp6s%3D" /></p>
+<h3 id="mathematical-insights">Mathematical Insights in Embeddings<a class="anchor" id="mathematical-insights"></a></h3>
+<p>These embeddings aren't just about finding similar words; they also offer <strong>mathematical insights</strong> into how models interpret data. The relationships between words in the embedding space provide a powerful framework for understanding semantics, context, and even cultural nuances.</p>
+<p>By examining these embeddings, we can gain a deeper appreciation of the intricate relationships that language models capture and how they contribute to the <strong>semantic understanding</strong> in large language models.  </p>
+<h3 id="dot-products-intuition">Intuition Behind Dot Products<a class="anchor" id="dot-products-intuition"></a></h3>
+<p>To understand embeddings and their applications, it's crucial to grasp the concept of the <strong>dot product</strong> between vectors. </p>
+<p><img alt="Intuition Image 1" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/995.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ANPVGCOn0TFWt0NG2GOl9SpQL4HQ8h368BZvmTy2i5A%3D" /></p>
+<p>The dot product helps measure the <strong>alignment</strong> of two vectors. Computationally, it involves multiplying the corresponding components and summing the results. This is efficient because much of our computation involves <strong>weighted sums</strong>. </p>
+<p>Geometrically, the dot product has the following properties:<br />
+- <strong>Positive</strong>: Vectors point in similar directions.<br />
+- <strong>Zero</strong>: Vectors are perpendicular.<br />
+- <strong>Negative</strong>: Vectors point in opposite directions.</p>
+<h3 id="plurality-in-embedding-space">Plurality in Embedding Space<a class="anchor" id="plurality-in-embedding-space"></a></h3>
+<p>Let's hypothesize that the difference between embeddings of "cats" and "cat" represents a direction for <strong>plurality</strong> in the embedding space. </p>
+<p><img alt="Hypothesis Image" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1000.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=7mXGlak1/X3OIoTz9EVexs/t0QN/p5v7gb/5LWkfgjc%3D" /></p>
+<p>To test this hypothesis, consider computing the dot product of this vector against embeddings of singular and plural nouns. </p>
+<pre><code class="language-python"># Example code to compute dot products  
+import numpy as np
+
+# Assume we have a function get_embedding(word) that returns the embedding of a word  
+cat_embedding = get_embedding(&quot;cat&quot;)  
+cats_embedding = get_embedding(&quot;cats&quot;)
+
+# Compute the plurality direction vector  
+plurality_vector = cats_embedding - cat_embedding
+
+# List of singular and plural words  
+words = [&quot;dog&quot;, &quot;dogs&quot;, &quot;horse&quot;, &quot;horses&quot;, &quot;car&quot;, &quot;cars&quot;]
+
+# Compute dot products  
+dot_products = {word: np.dot(plurality_vector, get_embedding(word)) for word in words}
+
+# Output the results  
+for word, dot_product in dot_products.items():  
+    print(f&quot;{word}: {dot_product}&quot;)  
+</code></pre>
+<h3 id="plurality-observations">Observations on Plurality Direction<a class="anchor" id="plurality-observations"></a></h3>
+<p>When you play around with this model, you'll notice that the <strong>plural nouns</strong> consistently yield higher dot product values than the singular nouns, indicating better alignment with the plurality direction.</p>
+<p><img alt="Observations Image 1" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1030.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=uEmv99lC9PkhX9ikfcL81uD7Or4Sm7aU63jT0uqdCk4%3D" /></p>
+<p>It's interesting to note that if you compute the dot product with embeddings of numbers (1, 2, 3, etc.), the values increase. This suggests a <strong>quantitative measure</strong> of how plural the model considers a word to be.</p>
+<h3 id="embedding-matrix">Embedding Matrix and Learned Data<a class="anchor" id="embedding-matrix"></a></h3>
+<p>The specifics of how words get embedded are learned from data. The <strong>embedding matrix</strong> reveals how each word is represented in this space.</p>
+<p><img alt="Embedding Matrix Image" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1075.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=6rSt8xyLM606b65NQ/KTYPbHXE7u0KNdrHdPKcTlaX8%3D" /></p>
+<h3 id="dot-products-application">Practical Application of Dot Products<a class="anchor" id="dot-products-application"></a></h3>
+<p>To further illustrate, let's take the plurality vector and compute its dot product against various words. Here is a practical example:</p>
+<pre><code class="language-python"># Function to compute dot product with plurality vector  
+def compute_plurality_score(word):  
+    word_embedding = get_embedding(word)  
+    return np.dot(plurality_vector, word_embedding)
+
+# Example words to test  
+test_words = [&quot;cat&quot;, &quot;cats&quot;, &quot;dog&quot;, &quot;dogs&quot;, &quot;car&quot;, &quot;cars&quot;, &quot;child&quot;, &quot;children&quot;]
+
+# Compute and print plurality scores  
+plurality_scores = {word: compute_plurality_score(word) for word in test_words}  
+for word, score in plurality_scores.items():  
+    print(f&quot;{word}: {score}&quot;)  
+</code></pre>
+<p>By plotting these scores, you can visualize how well the model captures the concept of plurality in its embedding space.</p>
+<h3 id="conclusion">Conclusion<a class="anchor" id="conclusion"></a></h3>
+<p>Understanding the <strong>dot product</strong> and its applications in the context of embeddings allows us to gain deeper insights into how language models interpret and represent data. This knowledge is fundamental for leveraging the full potential of embeddings in natural language processing tasks.  </p>
+<h3 id="embedding-space-vocabulary">Embedding Space and Vocabulary Size<a class="anchor" id="embedding-space-vocabulary"></a></h3>
+<p>In our model, the first pile of weights corresponds to the embedding layer. Using the GPT-3 model as an example, the <strong>vocabulary size</strong> is an impressive 50,257 tokens. This is illustrated in the image below:</p>
+<p><img alt="Vocabulary Size" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1080.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=aw8WNB%2BUvVABT%2Bf8tzI4wciuFcxo73%2BJ7pxpQazLo7s%3D" /></p>
+<p><strong>Note</strong>: These tokens are not just words but also include subword units, punctuation, and even parts of words.</p>
+<h3 id="embedding-dimension-weights">Embedding Dimension and Total Weights<a class="anchor" id="embedding-dimension-weights"></a></h3>
+<p>The <strong>embedding dimension</strong> for GPT-3 is 12,288. Multiplying the vocabulary size by the embedding dimension gives us the total number of weights in this layer, which is approximately 617 million weights.</p>
+<p><img alt="Total Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1085.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=xCX7vkhknUjVyJKg6pJYL9%2BMW2YRYqwQIhmBXI3Ce/g%3D" /></p>
+<p>Let's add this to our running tally, keeping in mind that by the end, we should count up to 175 billion weights.</p>
+<p><img alt="Running Tally" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1095.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=nTRJ5HhC%2BfcXyOvkZr7pmZVZyDl0cwYUexcjdKdU3Jo%3D" /></p>
+<h3 id="embedding-vectors-context">Embedding Vectors and Context<a class="anchor" id="embedding-vectors-context"></a></h3>
+<p>In the context of transformers, it's essential to understand that the vectors in the embedding space do not merely represent individual words. They also encode positional information about the word, which we will explore later.</p>
+<p><img alt="Positional Information" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1110.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/KoSTwMjioqiZRxN/9SYjyFmcLRoIvEC9Hdk7vIoD4Q%3D" /></p>
+<p>More importantly, these vectors have the capability to soak in <strong>context</strong> from the surrounding words.</p>
+<p><img alt="Context" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1115.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=IC1fQGUH9oPYgy7sMPZcJpsWVsMmM3yHb9LrMv6y0YE%3D" /></p>
+<p>For example, a vector that starts as the embedding of the word "king" might be influenced by various blocks in the network, so that by the end, it points in a much more specific and nuanced direction. This would encode additional context such as "a king who lived in Scotland."</p>
+<p><img alt="King Context" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1125.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=4D%2BM77EEIetZpfWX6QWeDHSY8rQmfaO7l1YpQ1svwDs%3D" /></p>
+<h3 id="contextual-transformation">Contextual Transformation of Embeddings<a class="anchor" id="contextual-transformation"></a></h3>
+<p>The network's various blocks progressively tug and pull these vectors, refining them to capture <strong>contextual nuances</strong>. By the end of the transformation, the embedding for "king" might encode rich details such as the specific context in which the word appeared.</p>
+<p><img alt="Contextual Nuance" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1130.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=n2Wfq7o4gHRwAYqBU/fqiVyqvTq7gWsCn0I/Nl9DqhU%3D" /></p>
+<p>This transformation highlights the <strong>dynamic nature</strong> of embeddings in capturing semantic and syntactic information.</p>
+<p><img alt="Semantic Information" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1135.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=dpbHLiLfqmTiAGjZQXzBqxnd6hokccoKXukcewnIF%2B0%3D" /></p>
+<h3 id="practical-example-context">Practical Example of Embedding Context<a class="anchor" id="practical-example-context"></a></h3>
+<p>To illustrate this, consider a practical example. Suppose we have an embedding for the word "king" and we want to observe how it changes across the layers of a transformer network. Here is a simplified code block to simulate this:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Sample embedding vector for &quot;king&quot;  
+king_embedding = torch.randn(1, 12, 128)
+
+# Define a simple transformer block  
+class SimpleTransformerBlock(nn.Module):  
+    def __init__(self, embed_dim):  
+        super(SimpleTransformerBlock, self).__init__()  
+        self.attn = nn.MultiheadAttention(embed_dim, 8)  
+        self.ff = nn.Sequential(  
+            nn.Linear(embed_dim, 512),  
+            nn.ReLU(),  
+            nn.Linear(512, embed_dim)  
+        )  
+
+    def forward(self, x):  
+        attn_output, _ = self.attn(x, x, x)  
+        x = x + attn_output  
+        x = x + self.ff(x)  
+        return x
+
+# Create a series of transformer blocks  
+layers = nn.ModuleList([SimpleTransformerBlock(128) for _ in range(6)])
+
+# Pass the embedding through the layers  
+for layer in layers:  
+    king_embedding = layer(king_embedding)
+
+print(king_embedding)  
+</code></pre>
+<p>This example demonstrates how the embedding vector for "king" evolves through multiple layers of a transformer, capturing more context-specific information at each step.  </p>
+<h3 id="contextual-nuances">Contextual Nuances in Language Models<a class="anchor" id="contextual-nuances"></a></h3>
+<p>Continuing our journey through contextual embeddings, let's delve deeper into how these vectors can capture such rich and specific nuances. Consider a scenario where a "king" is not just any king but one who <strong>achieved his post after murdering the previous king and is described in Shakespearean language.</strong></p>
+<p><img alt="Shakespearean King" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1140.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=P3TEf1qYLYPbVXmq2NTq5E8lpLtF7pRkPcdY8cFVeCo%3D" /></p>
+<h3 id="context-word-meaning">Influence of Context on Word Meaning<a class="anchor" id="context-word-meaning"></a></h3>
+<p>The meaning of any given word is heavily influenced by its surrounding context. This context can sometimes include information from a significant distance away within the text.</p>
+<p><img alt="Contextual Influence" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1145.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=fFfDOKiNvR%2BEqLryh1hEpsJjY7O4/AjM3sLZYOshiU4%3D" /></p>
+<p>Think about your own understanding of a word. <strong>The meaning is informed by its surroundings</strong>, and sometimes, this includes context from a long distance away.</p>
+<p><img alt="Distant Context" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1150.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Ucw8cyVg8TIqCI1%2BLBURQp7K2shmiTX1wmp7107gZlI%3D" /></p>
+<h3 id="example-harry-potter">Practical Example: Harry Potter<a class="anchor" id="example-harry-potter"></a></h3>
+<p>To ground this in a practical example, consider the following text from "Harry Potter":</p>
+<pre><code class="language-text">Harry Potter was a highly unusual boy in many ways. For one thing, he hated the summer holidays more than any other time of year. For another, he really wanted to do his homework but was forced to do it in secret, in the dead of night. And he also happened to be a wizard.
+
+It was nearly midnight, and he was lying on his stomach in bed, the blankets drawn right over his head like a tent, a flashlight in one hand and a large leather-bound book (A History of Magic by Bathilda Bagshot) propped open against the pillow. Harry moved the tip of his eagle-feather quill down the page, frowning as he looked for something that would help him write his essay.  
+</code></pre>
+<p>In this passage, multiple layers of context influence the meaning and interpretation of Harry Potter's actions and characteristics:</p>
+<ul>
+<li><strong>Time of Day</strong>: Midnight sets a specific mood and context.  </li>
+<li><strong>Setting</strong>: Lying on his stomach in bed under blankets like a tent.  </li>
+<li><strong>Actions</strong>: Using a flashlight and reading a large leather-bound book.  </li>
+<li><strong>Object</strong>: The book, "A History of Magic," adds a layer of magical context.  </li>
+<li><strong>Tools</strong>: An eagle-feather quill, enhancing the magical setting.</li>
+</ul>
+<h3 id="capturing-context">Capturing Contextual Information<a class="anchor" id="capturing-context"></a></h3>
+<p>The context here informs us that Harry is not just any boy but one who is deeply immersed in a magical world. This understanding is crucial for language models to accurately interpret and generate text.</p>
+<p>Let's see how we might encode this in a language model:</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Sample embedding vector for the word &quot;Harry&quot;  
+harry_embedding = torch.randn(1, 12, 128)
+
+# Define a transformer block to capture context  
+class ContextTransformerBlock(nn.Module):  
+    def __init__(self, embed_dim):  
+        super(ContextTransformerBlock, self).__init__()  
+        self.attn = nn.MultiheadAttention(embed_dim, 8)  
+        self.ff = nn.Sequential(  
+            nn.Linear(embed_dim, 512),  
+            nn.ReLU(),  
+            nn.Linear(512, embed_dim)  
+        )  
+
+    def forward(self, x):  
+        attn_output, _ = self.attn(x, x, x)  
+        x = x + attn_output  
+        x = x + self.ff(x)  
+        return x
+
+# Create a series of transformer blocks  
+layers = nn.ModuleList([ContextTransformerBlock(128) for _ in range(6)])
+
+# Pass the embedding through the layers  
+for layer in layers:  
+    harry_embedding = layer(harry_embedding)
+
+print(harry_embedding)  
+</code></pre>
+<p>Here, the embedding vector for "Harry" would evolve through multiple layers of the transformer network, capturing the rich context surrounding his character. Each layer refines the embedding to include more specific details from the text.</p>
+<p>This example demonstrates how embeddings can be dynamically adjusted to capture the nuanced meanings of words in different contexts, making language models more accurate and context-aware.  </p>
+<h3 id="predict-next-word">Empowering Models to Predict the Next Word<a class="anchor" id="predict-next-word"></a></h3>
+<p>In constructing a model that can predict the next word, the goal is to empower it to incorporate context efficiently. When we create the initial array of vectors based on the input text, each vector is simply plucked out of the embedding matrix. Initially, these vectors can only encode the meaning of a single word without any input from their surroundings.</p>
+<p><img alt="Initial Embeddings" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1170.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Cxh6eX4dERnn61kCUCnGOhhQgYmI7opd00BCnwqvkaI%3D" /></p>
+<p>However, the primary goal of the network that these vectors flow through is to enable each one to soak up a meaning that is <strong>much richer and more specific</strong> than what mere individual words could represent.</p>
+<p><img alt="Rich Context Embedding" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1175.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=s%2BZCHaX%2BwEKnD8R33QXogkdBcKugz/4T4qMq1%2Btdq4I%3D" /></p>
+<p>The network processes a fixed number of vectors at a time, known as its <strong>context size</strong>.</p>
+<p><img alt="Context Size" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1180.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=0xYLl6sB5%2Br22Xu93w%2Bp8TomswoXVOVUWT%2By1R8mq1I%3D" /></p>
+<p>For GPT-3, it was trained with a context size of 248. The data flowing through the network always looks like an array of 248 columns, each of which has 12,000 dimensions. This context size limits how much text the transformer can incorporate when making a prediction of the next word.</p>
+<p><img alt="Array Dimensions" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1190.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Y/Ap5hUB2G0fT6u8MaPiP7kX0hgbitulmBHw6QXqHnU%3D" /></p>
+<h3 id="context-size-transformers">Context Size in Transformers<a class="anchor" id="context-size-transformers"></a></h3>
+<p>The context size is a crucial parameter in transformer models. For GPT-3, the context size of 248 means that the data flowing through the network always appears as an array of 248 columns, each with 12,000 dimensions. This context size limits the amount of text the transformer can incorporate when predicting the next word.</p>
+<p><img alt="Context Size Array" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1195.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=oRrAdyP28/lh4819Fbh/DJW8YRo4vwZJPSHKRdAtxzs%3D" /></p>
+<h3 id="implementing-context-transformers">Code Example: Implementing Context in Transformers<a class="anchor" id="implementing-context-transformers"></a></h3>
+<p>To better understand this, let's look at an example in code. We will implement a simple transformer block in PyTorch to see how context is incorporated.</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+# Define a transformer block  
+class TransformerBlock(nn.Module):  
+    def __init__(self, embed_dim, num_heads, ff_hidden_dim):  
+        super(TransformerBlock, self).__init__()  
+        self.attention = nn.MultiheadAttention(embed_dim, num_heads)  
+        self.feed_forward = nn.Sequential(  
+            nn.Linear(embed_dim, ff_hidden_dim),  
+            nn.ReLU(),  
+            nn.Linear(ff_hidden_dim, embed_dim)  
+        )  
+        self.layer_norm1 = nn.LayerNorm(embed_dim)  
+        self.layer_norm2 = nn.LayerNorm(embed_dim)  
+
+    def forward(self, x):  
+        attn_output, _ = self.attention(x, x, x)  
+        x = self.layer_norm1(x + attn_output)  
+        ff_output = self.feed_forward(x)  
+        x = self.layer_norm2(x + ff_output)  
+        return x
+
+# Sample input tensor (batch_size=1, seq_len=248, embed_dim=128)  
+input_tensor = torch.randn(1, 248, 128)
+
+# Initialize transformer block  
+transformer_block = TransformerBlock(embed_dim=128, num_heads=8, ff_hidden_dim=512)
+
+# Forward pass  
+output_tensor = transformer_block(input_tensor)  
+print(output_tensor.shape)  # Output: torch.Size([1, 248, 128])  
+</code></pre>
+<p>In this example, we define a <code>TransformerBlock</code> class that includes multi-head attention and feed-forward neural network layers. The input tensor represents a batch of sequences, each with a length of 248 and embedding dimensions of 128. The transformer block processes this input tensor to incorporate context into each embedding vector.</p>
+<p>This implementation mirrors the architecture of larger models like GPT-3, where the context size and embedding dimensions are scaled up significantly.</p>
+<h3 id="visualizing-data-flow">Visualizing the Data Flow<a class="anchor" id="visualizing-data-flow"></a></h3>
+<p>To give a visual representation of how the data flows through the network, consider the following images:</p>
+<p><img alt="Data Flow Visualization 1" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1210.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=wYYHn8QPiq4vmRHIRtKDslKUSP2Z1hSEfWjnX3FltCM%3D" /></p>
+<p>These visualizations help us understand the complexity and scale of the data transformations happening within each layer of the transformer model. Each column in the array represents a vector that is dynamically updated to incorporate more context as it passes through the network layers.</p>
+<h3 id="summary-key-points">Summary of Key Points<a class="anchor" id="summary-key-points"></a></h3>
+<ul>
+<li><strong>Initial Embeddings</strong>: Vectors initially represent single words without context.  </li>
+<li><strong>Context Size</strong>: Limits the amount of text the model can incorporate.  </li>
+<li><strong>Transformer Blocks</strong>: Utilize multi-head attention and feed-forward layers to integrate context into embeddings.  </li>
+<li><strong>Visualization</strong>: Helps in understanding the data flow and transformations within the model.</li>
+</ul>
+<p>By understanding these components, we can appreciate how transformers efficiently predict the next word by incorporating rich contextual information. This understanding is crucial for developing more sophisticated and accurate language models.  </p>
+<h3 id="challenges-chatbots">Challenges of Long Conversations in Chatbots<a class="anchor" id="challenges-chatbots"></a></h3>
+<p>This is why long conversations with certain chatbots like the early versions of ChatGPT often faced significant difficulties. As the context size is limited, these models may struggle to maintain the coherence and relevance of responses over extended interactions.</p>
+<h4 id="context-limitation-example">Example of Context Limitation<a class="anchor" id="context-limitation-example"></a></h4>
+<p>Consider a scenario where a chatbot is engaged in a lengthy discussion about various cuisines. As the conversation progresses, the initial context might get truncated, causing the bot to lose track of the earlier parts of the dialogue. This can lead to responses that are inconsistent or irrelevant.</p>
+<p>To illustrate this, let's break down how a chatbot might handle a list of restaurant recommendations in a long conversation:</p>
+<pre><code class="language-python"># Simulated conversation context  
+conversation = [  
+    &quot;User: Can you recommend some good restaurants in Ñuñoa?&quot;,  
+    &quot;Bot: Sure! Here are a few recommendations:&quot;,  
+    &quot;1. El Huerto: A popular spot for vegetarian dishes...&quot;,  
+    &quot;2. La Mar: Famous for its Peruvian seafood...&quot;,  
+    &quot;3. Liguria: Known for its Chilean cuisine and vibrant atmosphere...&quot;,  
+    # Truncated context due to length  
+    &quot;4. Sukine: Craving Japanese cuisine? Sukine offers a wide range of sushi...&quot;,  
+    &quot;5. Las Lanzas: For a taste of Chilean seafood specialties...&quot;  
+]
+
+# Context size limitation example  
+context_limit = 3  
+limited_context = conversation[-context_limit:]
+
+print(&quot;Bot's limited context view:&quot;, limited_context)  
+# Output: [&quot;3. Liguria: Known for its Chilean cuisine and vibrant atmosphere...&quot;, &quot;4. Sukine: Craving Japanese cuisine? Sukine offers a wide range of sushi...&quot;, &quot;5. Las Lanzas: For a taste of Chilean seafood specialties...&quot;]  
+</code></pre>
+<p>In this example, the chatbot's context is limited to the last three entries. If the user asks a follow-up question about the first restaurant, the bot might not have the necessary context to provide a coherent answer.</p>
+<h3 id="restaurant-recommendations">Restaurant Recommendations in Ñuñoa<a class="anchor" id="restaurant-recommendations"></a></h3>
+<p>Continuing from the text extracted from the image, let's delve into some specific restaurant recommendations in the Ñuñoa neighborhood, showcasing diverse culinary experiences.</p>
+<h4 id="sukine">4. Sukine<a class="anchor" id="sukine"></a></h4>
+<p><strong>Craving Japanese cuisine?</strong> Sukine offers a wide range of sushi, sashimi, and izakaya-style dishes in a sleek and modern setting. Whether you're in the mood for traditional favorites or innovative creations, Sukine delivers high-quality Japanese fare.</p>
+<p><img alt="Sukine" src="https://example.com/sukine_image.jpg" /></p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Nigiri Sushi  </li>
+<li>Sashimi Platters  </li>
+<li>Tempura  </li>
+<li>Ramen Bowls</li>
+</ul>
+<h4 id="las-lanzas">5. Las Lanzas<a class="anchor" id="las-lanzas"></a></h4>
+<p>For a taste of <strong>Chilean seafood specialties</strong>, head to Las Lanzas. This seafood restaurant serves fresh fish, shellfish, and traditional Chilean dishes like paila marina and pastel de jaiba. The casual atmosphere and friendly service make it a great spot for a relaxed meal with friends or family.</p>
+<p><img alt="Las Lanzas" src="https://example.com/las_lanzas_image.jpg" /></p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Paila Marina (Seafood Stew)  </li>
+<li>Pastel de Jaiba (Crab Pie)  </li>
+<li>Grilled Fish  </li>
+<li>Ceviche</li>
+</ul>
+<p>These restaurants offer diverse culinary experiences in Ñuñoa, catering to different tastes and preferences. Whether you're in the mood for vegetarian fare, Peruvian delights, Chilean seafood, or Japanese sushi, you'll find something to satisfy your cravings in this vibrant neighborhood.</p>
+<h3 id="enhancing-chatbot-coherence">Enhancing Chatbot Coherence<a class="anchor" id="enhancing-chatbot-coherence"></a></h3>
+<p>To mitigate the issues of context limitation in chatbots, several strategies can be employed:</p>
+<ol>
+<li><strong>Extended Context Windows</strong>: Increasing the context size allows the model to retain more information from previous interactions.  </li>
+<li><strong>Memory-Augmented Models</strong>: Implementing mechanisms for long-term memory can help the chatbot recall important details from earlier parts of the conversation.  </li>
+<li><strong>User Prompts</strong>: Encouraging users to provide context or repeat important information can help maintain coherence.</li>
+</ol>
+<p>Here's an example of how a chatbot can be enhanced with a memory-augmented model:</p>
+<pre><code class="language-python">class MemoryAugmentedChatbot:  
+    def __init__(self, max_memory_size=5):  
+        self.memory = []  
+        self.max_memory_size = max_memory_size
+
+    def update_memory(self, new_entry):  
+        if len(self.memory) &gt;= self.max_memory_size:  
+            self.memory.pop(0)  # Remove the oldest entry  
+        self.memory.append(new_entry)
+
+    def get_context(self):  
+        return &quot; &quot;.join(self.memory)
+
+    def respond(self, user_input):  
+        self.update_memory(user_input)  
+        context = self.get_context()  
+        # Simulate a response based on context  
+        response = f&quot;I remember you mentioned: {context}. How can I help further?&quot;  
+        return response
+
+# Simulated interaction  
+chatbot = MemoryAugmentedChatbot()  
+print(chatbot.respond(&quot;User: Can you recommend some good restaurants in Ñuñoa?&quot;))  
+print(chatbot.respond(&quot;User: What do you know about Sukine?&quot;))  
+print(chatbot.respond(&quot;User: Tell me more about Las Lanzas.&quot;))  
+</code></pre>
+<p>In this example, the <code>MemoryAugmentedChatbot</code> class maintains a memory of the last few interactions, ensuring that the chatbot can reference past conversation context when generating responses. This approach helps improve the coherence and relevance of long conversations.</p>
+<p>By understanding and addressing the limitations of context size in transformer models and chatbots, we can develop more effective and engaging conversational agents.  </p>
+<h3 id="coherence-long-conversations">Coherence in Long Conversations<a class="anchor" id="coherence-long-conversations"></a></h3>
+<p>Often, with extended dialogues, chatbots give the feeling of losing the thread of the conversation. This results in responses that are less relevant or coherent, frustrating users who expect a seamless interaction.</p>
+<h4 id="addressing-context-limitation">Addressing Context Limitation in Chatbots<a class="anchor" id="addressing-context-limitation"></a></h4>
+<p>To address the limitations of context in chatbots, we can employ strategies such as increasing the context window size, implementing memory-augmented models, and encouraging users to provide relevant context during conversations. By retaining more information from previous interactions, these models can generate more coherent and contextually appropriate responses.</p>
+<h3 id="vegetarian-restaurants-nunoa">Alternative Vegetarian-Friendly Restaurants in Ñuñoa<a class="anchor" id="vegetarian-restaurants-nunoa"></a></h3>
+<h4 id="el-huerto">1. El Huerto<a class="anchor" id="el-huerto"></a></h4>
+<p><strong>El Huerto</strong> is an excellent choice for vegetarian dining in Ñuñoa. They offer a variety of flavorful vegetarian dishes made with fresh, locally sourced ingredients, ensuring a satisfying dining experience for vegetarians.</p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Fresh Salads  </li>
+<li>Vegetarian Paella  </li>
+<li>Quinoa Bowls  </li>
+<li>Seasonal Vegetables</li>
+</ul>
+<h4 id="sukine-vegetarian">2. Sukine<a class="anchor" id="sukine-vegetarian"></a></h4>
+<p>While <strong>Sukine</strong> is known for its Japanese cuisine, they also offer vegetarian options such as vegetable sushi rolls, tofu dishes, and vegetable tempura. It's a great option if you're looking for a vegetarian-friendly restaurant with a diverse menu.</p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Vegetable Sushi Rolls  </li>
+<li>Tofu Dishes  </li>
+<li>Vegetable Tempura</li>
+</ul>
+<h4 id="quinoa-restaurante">3. Quinoa Restaurante<a class="anchor" id="quinoa-restaurante"></a></h4>
+<p><strong>Quinoa Restaurante</strong> specializes in vegetarian and vegan cuisine, with a menu featuring creative and nutritious dishes made with quinoa and other plant-based ingredients. It's a popular choice among vegetarians and vegans in Ñuñoa.</p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Quinoa Salads  </li>
+<li>Vegan Burgers  </li>
+<li>Plant-based Smoothies</li>
+</ul>
+<h4 id="govindas">4. Govindas<a class="anchor" id="govindas"></a></h4>
+<p>If you're in the mood for vegetarian Indian cuisine, <strong>Govindas</strong> is the place to go. They offer a variety of delicious vegetarian dishes inspired by traditional Indian recipes.</p>
+<ul>
+<li><strong>Menu Highlights</strong>:  </li>
+<li>Paneer Tikka  </li>
+<li>Vegetable Biryani  </li>
+<li>Chole Bhature</li>
+</ul>
+<p>By providing a diverse range of vegetarian dining options, Ñuñoa caters to different tastes and preferences, ensuring that everyone can enjoy a satisfying meal.</p>
+<h3 id="enhancing-coherence-memory-models">Enhancing Chatbot Coherence with Memory-Augmented Models<a class="anchor" id="enhancing-coherence-memory-models"></a></h3>
+<p>Memory-augmented models can significantly improve the coherence of chatbot interactions by maintaining a memory of past exchanges. This allows the chatbot to reference earlier parts of the conversation, leading to more relevant and contextually appropriate responses.</p>
+<h4 id="implementation-example">Implementation Example<a class="anchor" id="implementation-example"></a></h4>
+<p>Here's an example of how a memory-augmented chatbot can be implemented:</p>
+<pre><code class="language-python">class MemoryAugmentedChatbot:  
+    def __init__(self, max_memory_size=5):  
+        self.memory = []  
+        self.max_memory_size = max_memory_size
+
+    def update_memory(self, new_entry):  
+        if len(self.memory) &gt;= self.max_memory_size:  
+            self.memory.pop(0)  # Remove the oldest entry  
+        self.memory.append(new_entry)
+
+    def get_context(self):  
+        return &quot; &quot;.join(self.memory)
+
+    def respond(self, user_input):  
+        self.update_memory(user_input)  
+        context = self.get_context()  
+        # Simulate a response based on context  
+        response = f&quot;I remember you mentioned: {context}. How can I help further?&quot;  
+        return response
+
+# Simulated interaction  
+chatbot = MemoryAugmentedChatbot()  
+print(chatbot.respond(&quot;User: Can you recommend some good restaurants in Ñuñoa?&quot;))  
+print(chatbot.respond(&quot;User: What do you know about Sukine?&quot;))  
+print(chatbot.respond(&quot;User: Tell me more about Las Lanzas.&quot;))  
+</code></pre>
+<p>In this example, the <code>MemoryAugmentedChatbot</code> class maintains a memory of the last few interactions. This helps the chatbot to generate responses that are informed by the earlier parts of the conversation, improving coherence and relevance.</p>
+<h3 id="improving-chatbot-performance">Improving Chatbot Performance<a class="anchor" id="improving-chatbot-performance"></a></h3>
+<p>To further enhance chatbot performance, consider the following strategies:</p>
+<ol>
+<li><strong>Extended Context Windows</strong>: Increasing the context size allows the model to retain more information from previous interactions.  </li>
+<li><strong>Memory-Augmented Models</strong>: Implementing mechanisms for long-term memory can help the chatbot recall important details from earlier parts of the conversation.  </li>
+<li><strong>User Prompts</strong>: Encouraging users to provide context or repeat important information can help maintain coherence.</li>
+</ol>
+<p>By understanding and addressing the limitations of context size in transformer models and chatbots, we can develop more effective and engaging conversational agents.  </p>
+<h3 id="attention-in-llms">Attention in Large Language Models<a class="anchor" id="attention-in-llms"></a></h3>
+<p>We'll go into the details of attention in due time, but skipping ahead, I want to talk for a minute about what happens at the very end. Remember, the desired output is a probability distribution over all tokens that might come next.</p>
+<p>For example, if the very last word is <strong>Professor</strong>, and the context includes words like <strong>Harry Potter</strong>, and immediately preceding, we see <strong>least favorite teacher</strong>, and also if you give me some leeway by letting me pretend that tokens simply look like full words, then a well-trained network that had built up knowledge of <strong>Harry Potter</strong> would presumably assign a high number to the word <strong>Snape</strong>. This involves two different steps.</p>
+<p><img alt="Harry Potter Context" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1225.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=2CnX8EYj47RUHWktXSJQO%2BFnULcnUUNTBNp0CD1oV%2BU%3D" /></p>
+<h3 id="generating-probability-distribution">Generating the Probability Distribution<a class="anchor" id="generating-probability-distribution"></a></h3>
+<p>The first step is to use another matrix that maps the very last vector in that context to a list of 50,000 values, one for each token in the vocabulary. Then there's a function that normalizes this into a probability distribution. This function is called <strong>softmax</strong>, and we'll talk more about it in just a second. </p>
+<p><img alt="Token Mapping" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1230.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=8JpJwJUljBYhidt%2BztlZUGEiB4uQ7qiEmVrPsibUA8Y%3D" /></p>
+<p>However, it might seem a little bit weird to only use this last embedding to make a prediction about the next token. Instead, we should consider the entire context to make a more informed decision.</p>
+<pre><code class="language-python">import torch  
+import torch.nn.functional as F
+
+# Assume 'context' is the tensor representing the context embeddings  
+last_embedding = context[-1]  # The last embedding  
+vocab_size = 50000
+
+# A linear layer that maps the last embedding to logits for each token  
+logits = torch.matmul(last_embedding, torch.randn((last_embedding.shape[-1], vocab_size)))
+
+# Applying softmax to get the probability distribution  
+probabilities = F.softmax(logits, dim=-1)  
+</code></pre>
+<h3 id="understanding-softmax">Understanding Softmax<a class="anchor" id="understanding-softmax"></a></h3>
+<p>The softmax function is a crucial component in many machine learning models, especially in classification tasks. It converts raw scores (logits) into probabilities, making it easier to interpret the model's output.</p>
+<pre><code class="language-python">import numpy as np
+
+def softmax(x):  
+    e_x = np.exp(x - np.max(x))  
+    return e_x / e_x.sum(axis=0)
+
+# Example usage  
+logits = np.array([2.0, 1.0, 0.1])  
+probabilities = softmax(logits)  
+print(probabilities)  
+# Output: [0.65900114 0.24243297 0.09856589]  
+</code></pre>
+<h3 id="contextual-prediction">Contextual Prediction<a class="anchor" id="contextual-prediction"></a></h3>
+<p>Using the entire context rather than just the last token's embedding helps the model make more accurate predictions. This is because the entire sequence of words contributes to the meaning of the next word.</p>
+<p><img alt="Contextual Prediction" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1235.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=j4CJtveITkz6Bj4Js6xIAkP7AtyEsPZNoho2T88u5kk%3D" /></p>
+<p>Consider the context that includes words like <strong>Harry Potter</strong> and <strong>least favorite teacher</strong>. A well-trained model will likely predict <strong>Snape</strong> as the next word due to the established context.</p>
+<h3 id="role-of-attention">The Role of Attention<a class="anchor" id="role-of-attention"></a></h3>
+<p>Attention mechanisms help models focus on relevant parts of the input sequence, making them more effective at understanding context. This is particularly important in tasks like machine translation, where the model needs to pay attention to specific words in the source sentence to produce an accurate translation.</p>
+<pre><code class="language-python">import torch  
+import torch.nn as nn
+
+class AttentionMechanism(nn.Module):  
+    def __init__(self, hidden_size):  
+        super(AttentionMechanism, self).__init__()  
+        self.hidden_size = hidden_size  
+        self.attn = nn.Linear(self.hidden_size, hidden_size)  
+        self.softmax = nn.Softmax(dim=1)
+
+    def forward(self, hidden, encoder_outputs):  
+        # Calculate attention scores  
+        attn_scores = self.attn(hidden)  
+        attn_weights = self.softmax(attn_scores)  
+
+        # Compute context vector  
+        context = torch.bmm(attn_weights.unsqueeze(0), encoder_outputs.unsqueeze(0))  
+        return context, attn_weights
+
+# Example usage  
+hidden = torch.randn((1, hidden_size))  
+encoder_outputs = torch.randn((10, hidden_size))  
+attention = AttentionMechanism(hidden_size)  
+context, attn_weights = attention(hidden, encoder_outputs)  
+</code></pre>
+<h3 id="visualizing-attention-weights">Visualizing Attention Weights<a class="anchor" id="visualizing-attention-weights"></a></h3>
+<p>Attention weights can be visualized to understand which parts of the input the model is focusing on. This helps in interpreting the model's decision-making process.</p>
+<p><img alt="Attention Weights" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1240.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=WgrkFkALhJeFR5J9%2B7GFmyoYJ4cSQUnisDeLu5umqvw%3D" /></p>
+<p>In the above example, attention weights highlight how the model attends to different parts of the input sequence, making the prediction more contextually accurate.</p>
+<p>By understanding and implementing attention mechanisms, we can significantly enhance the performance of large language models, making them more effective at tasks requiring contextual understanding and long-term dependencies.  </p>
+<h3 id="prediction-in-llms">Prediction in Large Language Models<a class="anchor" id="prediction-in-llms"></a></h3>
+<p>When making a prediction, it is essential to consider all the vectors in the layer due to their context-rich meanings. </p>
+<p><img alt="Context-Rich Vectors" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1290.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=MEg0UIrYPE2trP28ikoOxR3y3%2BC5YD1njv3X/TqqzcA%3D" /></p>
+<p>During the training process, it turns out to be much more efficient if you use each one of those vectors in the final layer to simultaneously make a prediction for what would come immediately after it.</p>
+<p><img alt="Efficient Training Process" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1295.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=txWR/E1YOIKBP9KaMCBmGeYkHR0XXTO/OxweomyDfz8%3D" /></p>
+<h3 id="unembedding-matrix">Unembedding Matrix<a class="anchor" id="unembedding-matrix"></a></h3>
+<p>This matrix is called the unembedding matrix, labeled as <strong>WU</strong>. Like all weight matrices we see, its entries begin at random but are learned during the training process.</p>
+<p><img alt="Unembedding Matrix" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1310.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=/s22DHGl39yPm3FdJesKe8kdmhZbUpC8lppiSBkIOGQ%3D" /></p>
+<p>Keeping score on our total parameter count, this unembedding matrix has one row for each word in the vocabulary, and each row has the same number of elements as the embedding dimension.</p>
+<p><img alt="Parameter Count" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1325.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=ZcoNbzaGMHnI4udEZgwNzFb33eL%2BqD1%2BL1VSo8GWu6c%3D" /></p>
+<h3 id="parameter-count">Parameter Count<a class="anchor" id="parameter-count"></a></h3>
+<p>It’s very similar to the embedding matrix, just with the order swapped. This adds another 617 million parameters to the network, bringing our count so far to a little over a billion. This is a small, but not wholly insignificant fraction of the 175 billion parameters we’ll end up with in total.</p>
+<p><img alt="Embedding Matrix" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1330.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=mMoUi%2BzoDKZitXRBU4DJnX5TxeyzFOnhxufBazPrJKE%3D" /></p>
+<h3 id="softmax-function">Softmax Function<a class="anchor" id="softmax-function"></a></h3>
+<p>As the very last mini-lesson for this chapter, let’s delve further into the <strong>softmax</strong> function. The softmax function transforms raw scores (logits) into probabilities, ensuring that the output is interpretable as probabilities.</p>
+<pre><code class="language-python">import numpy as np
+
+def softmax(x):  
+    e_x = np.exp(x - np.max(x))  
+    return e_x / e_x.sum(axis=0)
+
+# Example usage  
+logits = np.array([2.0, 1.0, 0.1])  
+probabilities = softmax(logits)  
+print(probabilities)  
+# Output: [0.65900114 0.24243297 0.09856589]  
+</code></pre>
+<p><img alt="Softmax Function" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1345.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=wa98LR0YIqTq74emCQ8LBe8MCFNvVmxqCRIhGKfpU9o%3D" /></p>
+<h3 id="key-points">Key Points to Remember<a class="anchor" id="key-points"></a></h3>
+<ul>
+<li><strong>Context-Rich Vectors</strong>: Utilizing all vectors in the layer for prediction.  </li>
+<li><strong>Unembedding Matrix (WU)</strong>: Learned during training, similar to the embedding matrix but with the order swapped.  </li>
+<li><strong>Parameter Count</strong>: Adds up to over a billion parameters before reaching the final 175 billion.  </li>
+<li><strong>Softmax Function</strong>: Converts logits into probabilities, making outputs interpretable.</li>
+</ul>
+<p>By focusing on these essential components, the understanding of how predictions are made in large language models becomes clearer.  </p>
+<h3 id="softmax-function-continued">Softmax Function (Continued)<a class="anchor" id="softmax-function-continued"></a></h3>
+<p>The softmax function continues to play an integral role in the prediction process, especially since it makes another appearance for us once we dive into the attention blocks.</p>
+<p><img alt="Softmax Function in Attention Blocks" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1350.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=IST20ghVSOHUklmUNSkosngqTWLBKRmdfb5y6K1vrJs%3D" /></p>
+<p>The idea is that if you want a sequence of numbers to act as a probability distribution,</p>
+<p><img alt="Sequence of Numbers" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1355.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=2NE2Xh5n9L74K5qhrAA1XO%2BfmsXdKpiNCdbIaf2EWlw%3D" /></p>
+<p>say a distribution over all possible next words, then each value has to be between 0 and 1, and you also need all of them to add up to 1. However, if you're playing the deep learning game, where everything you do looks like matrix vector multiplication, the outputs that you get by default</p>
+<p><img alt="Matrix Vector Multiplication" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1370.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=6M6MlEkZ8nRb8f1FY93swjE7JopLS4Jut7561zLe8t8%3D" /></p>
+<p>don't abide by this at all. The values are often negative, or much bigger than 1, and they almost certainly don't add up to 1. <strong>Softmax</strong> is the standard way to turn an arbitrary list of numbers into a valid distribution, in such a way that the largest values end up closest to 1,</p>
+<p><img alt="Softmax Distribution" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1385.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=J1KdhBjX%2Bpk2rvBWM80idFMGK5/EtihifQ67lR/nDJk%3D" /></p>
+<p>and the smaller values end up very close to 0. That's all you really need to know, but if you're curious, the way that it works is to first raise <strong>E</strong> to the power of each of the numbers, which means you now have a list of positive values, and then you can take the sum of all those positive values, and divide each term by that sum, which normalizes it into a list that adds up to 1.</p>
+<p>Here’s a step-by-step breakdown:</p>
+<ol>
+<li><strong>Raise E to the power of each number</strong>: This ensures all values are positive.  </li>
+<li><strong>Sum all positive values</strong>: This gives a denominator to normalize the values.  </li>
+<li><strong>Divide each term by the sum</strong>: This normalization step ensures the values sum up to 1.</li>
+</ol>
+<p><img alt="Softmax Normalization" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1410.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=VGjISU9jF4xfzJiqyO94Tkkptl9/RBV23ejYbOYxFps%3D" /></p>
+<p>By applying the softmax function, we ensure that the outputs of our neural network are interpretable as probabilities, making them essential for tasks like classification where the output needs to be between 0 and 1 and sum up to 1.</p>
+<hr />
+<p>This section has emphasized the importance of the softmax function in transforming raw scores into valid probability distributions. By diving into the mechanics of softmax, we can appreciate its role in ensuring that neural network outputs are meaningful and interpretable.  </p>
+<h3 id="softmax-function-continued">Softmax Function (Continued)<a class="anchor" id="softmax-function-continued"></a></h3>
+<p>You'll notice that if one of the numbers in the input is meaningfully bigger than the rest, then in the output, the corresponding term dominates the distribution. So if you were sampling from it, you'd almost certainly just be picking the maximizing input. However, it's softer than just picking the max in the sense that when other values are similarly large, they also get meaningful weight in the distribution. Everything changes continuously as you continuously vary the inputs.</p>
+<p>In some situations, like when ChatGPT is using this distribution to create the next word,</p>
+<p><img alt="ChatGPT Distribution" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1440.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=toQKWYE9hQAmyqoEKBG7am0wMuSGJqx3jjr9XcH9wxg%3D" /></p>
+<p>there's room for a little bit of extra fun by adding a little extra spice into this function. This is done by introducing a constant ( T ) in the denominator of those exponents. We call it the <strong>temperature</strong>,</p>
+<p><img alt="Temperature Adjustment" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1450.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Bw4XFLoclRwveuJdzZZnE38CDi5m8TfiTZnIlGOZX5M%3D" /></p>
+<p>since it vaguely resembles the role of temperature in certain thermodynamic equations. The effect is that when ( T ) is larger, you give more weight to the lower values, making the distribution a little bit more uniform. Conversely, if ( T ) is smaller, then the bigger values will dominate more aggressively. In the extreme case, setting ( T ) equal to 0 means all of the weight goes to that maximum value.</p>
+<p>For example, let’s have GPT-3 generate a story with a seed text:</p>
+<p><img alt="GPT-3 Generation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1475.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=F7SRK3nC3jeUCvZi/2L0/RzMRWBfWB%2BHV8NPokc7uGs%3D" /></p>
+<p>Here's how the temperature ( T ) affects the generation:</p>
+<ul>
+<li><strong>High Temperature ( T )</strong>: Generates more diverse outputs, as the model gives more weight to less probable tokens.  </li>
+<li><strong>Low Temperature ( T )</strong>: Generates more deterministic and focused outputs, as the model heavily favors the highest probability tokens.</li>
+</ul>
+<p>Adjusting the temperature parameter allows for control over the randomness and creativity of the generated text, making it a powerful tool for fine-tuning the behavior of neural network outputs.</p>
+<hr />
+<p>By understanding and manipulating the temperature parameter in the softmax function, we can influence how neural networks generate outputs, balancing between diversity and determinism. This nuanced control is crucial for applications such as text generation, where the desired outcome may vary depending on the context and objectives.  </p>
+<h3 id="exploring-temperature">Exploring Temperature in Text Generation<a class="anchor" id="exploring-temperature"></a></h3>
+<p>Upon a time, there was A, but I'm going to use different temperatures in each case.</p>
+<h4 id="temperature-0">Temperature 0: Predictability at Its Peak<a class="anchor" id="temperature-0"></a></h4>
+<p>Temperature 0 means that it always goes with the most predictable word, and what you get ends up being kind of a trait derivative of Goldilocks. At this temperature, the output is highly deterministic and lacks creativity. This results in the model producing the most likely continuation of the given prompt, reducing the chances of generating novel or unexpected content.</p>
+<p>For instance, with Temperature 0, the model's output might look something like this:</p>
+<pre><code class="language-plaintext">Once upon a time, there was a young girl named Goldilocks. She went for a walk in the forest. Pretty soon, she came upon a house. She knocked and, when no one answered, she walked right in.  
+</code></pre>
+<p>As you can see, the story follows a well-known and predictable path, with no room for variation or surprise.</p>
+<h4 id="higher-temperature">Higher Temperature: Injecting Creativity and Risk<a class="anchor" id="higher-temperature"></a></h4>
+<p>A higher temperature gives it a chance to choose less likely words, but it comes with a risk. In this case, the story starts out a bit more originally, about a young web artist from South Korea, but it quickly degenerates into nonsense. This trade-off between creativity and coherence is a crucial aspect of text generation models.</p>
+<pre><code class="language-plaintext">Once upon a time, there was a young web artist from South Korea. She wandered through the digital forests, sketching the codes of dreams. Suddenly, a pixelated dragon appeared, singing a melody of binary stars.  
+</code></pre>
+<p>While the beginning is more original, the narrative can quickly lose coherence, resulting in nonsensical or disjointed content.</p>
+<p><img alt="Temperature Effects" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1515.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=P6SGArGOKftOyICGg2N3gMLvNY6nb0DnNx%2BSwZqc3kg%3D" /></p>
+<p>Technically speaking, the API doesn't actually let you pick a temperature bigger than two. There is no mathematical reason for this. It's just an arbitrary constraint imposed to prevent the model from generating overly nonsensical content.</p>
+<p>I suppose this constraint is to keep their tool from being seen generating things that are too nonsensical. So, if you're curious about the way this animation is actually working, here's an inside look:</p>
+<h4 id="animation-mechanics">Animation Mechanics<a class="anchor" id="animation-mechanics"></a></h4>
+<p>I'm taking the 20 most probable next tokens that GPT-3 generates, which seems to be the maximum they'll give me. Then, I tweak the probabilities based on an exponent of 1.5. This approach allows for a balance between predictability and creativity, ensuring that the generated content remains somewhat coherent while introducing some level of novelty.</p>
+<p><img alt="20 Most Probable Tokens" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1520.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=o/3KqXxTdhCPJQ263HIGfqdeLj9BbPo6d6SfFf/SDx8%3D" /></p>
+<p>To summarize the process:</p>
+<ul>
+<li><strong>Selecting Top Tokens</strong>: Identify the top 20 most probable next tokens.  </li>
+<li><strong>Adjusting Probabilities</strong>: Modify the probabilities using an exponent (e.g., 1.5) to balance predictability and novelty.  </li>
+<li><strong>Generating Output</strong>: Use the adjusted probabilities to generate the next token and continue the text generation process.</li>
+</ul>
+<p><img alt="Probability Tweaking" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1525.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=MdCOaHXAkoVBtBaoA%2BrN7el0BO4iv2ZnZQ69biI2r7s%3D" /></p>
+<p>In the same way that you might call the components of a mixture, the generated tokens are selected based on their adjusted probabilities, ensuring a balance between coherence and creativity. This method allows for a nuanced control over the text generation process, making it possible to tailor the output to specific needs or preferences.</p>
+<p><img alt="Token Selection" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1535.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=CrFfw/tsl5%2B/3WyN5A4LMty67izg5FecXCM%2BOCFF3bQ%3D" /></p>
+<p>By understanding and manipulating the temperature parameter and the token selection process, we can fine-tune the behavior of neural network outputs, achieving the desired balance between creativity and coherence. This nuanced control is essential for applications such as storytelling, dialogue generation, and other creative tasks where the quality of the generated content is paramount.  </p>
+<h4 id="logits-role-text-generation">Logits and Their Role in Text Generation<a class="anchor" id="logits-role-text-generation"></a></h4>
+<p>When discussing the output of a function that calculates probabilities, many people refer to the inputs as <strong>Logits</strong>. It's worth noting that this term can have different pronunciations; some people say <em>Lodgets</em>, while others prefer <em>Loggets</em>. For consistency, we'll use <em>Loggets</em> throughout this article.</p>
+<p>For instance, when you feed in some text, you have all these word embeddings flowing through the network.</p>
+<p><img alt="Word Embeddings Flow" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1550.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=0W2Xhsxd0%2BAynKjniDR7E5WskOZdQAudUKMae2Rcy94%3D" /></p>
+<p>At the final stage, you perform a multiplication with the unembedding matrix. Machine learning practitioners refer to the components in that raw, unnormalized output as the <strong>Logits</strong> for the next word prediction.</p>
+<p><img alt="Unembedding Matrix" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1555.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=yNqnDmR51tYz0%2BM1zt0%2Bz7LgREq9keHF2EQCCo8qgiw%3D" /></p>
+<h3 id="foundations-attention-mechanisms">Laying the Foundations for Understanding Attention Mechanisms<a class="anchor" id="foundations-attention-mechanisms"></a></h3>
+<p>A significant portion of this chapter aims to lay the groundwork for comprehending the <strong>attention mechanism</strong> in neural networks, akin to the <em>Wax on, Wax off</em> training in <em>The Karate Kid</em>. If you develop a solid intuition for:</p>
+<ul>
+<li><strong>Word Embeddings</strong>: How words are represented as vectors.  </li>
+<li><strong>Softmax Function</strong>: Converting logits to probabilities.  </li>
+<li><strong>Dot Products</strong>: Measuring similarity between vectors.</li>
+</ul>
+<p>...and comprehend the underlying premise that most calculations resemble matrix multiplication with matrices full of tunable parameters, then grasping the attention mechanism—an essential component in modern AI—should be relatively smooth.</p>
+<p><img alt="Foundations for Attention" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1565.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=2lsUcJ2SkwPGe4IRB8GIsCcPfH/u4rEhRseiUyp1Z0Y%3D" /></p>
+<h3 id="attention-mechanism-primer">The Attention Mechanism: A Primer<a class="anchor" id="attention-mechanism-primer"></a></h3>
+<p>Understanding the attention mechanism is crucial as it underpins many state-of-the-art models in natural language processing (NLP). At its core, attention allows the model to focus on different parts of the input sequence when generating each part of the output sequence. This dynamic weighting of input elements enables the model to handle long-term dependencies more effectively than traditional recurrent neural networks (RNNs).</p>
+<p><img alt="Attention Mechanism" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1570.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=nt7MvxZqBJAdRiBg3PKN1IoN%2BhEpvEFRglkdI2EcTmY%3D" /></p>
+<h4 id="key-concepts-attention">Key Concepts in Attention Mechanisms<a class="anchor" id="key-concepts-attention"></a></h4>
+<p>To fully understand the attention mechanism, let's break down some of its key components:</p>
+<ul>
+<li><strong>Queries, Keys, and Values</strong>: These are the fundamental building blocks of the attention mechanism. Each word in the input sequence is transformed into three vectors: a query, a key, and a value.  </li>
+<li><strong>Dot-Product Attention</strong>: The similarity between the query of one word and the keys of all words are calculated using dot products. This results in a set of attention weights.  </li>
+<li><strong>Weighted Sum</strong>: The final step involves computing a weighted sum of the values, using the attention weights, to produce the output for each word.</li>
+</ul>
+<p><img alt="Attention Calculation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1575.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=Q74T8bEVvlhdcQLfXay9WCrgehabUxe8OBrQVe4yLcw%3D" /></p>
+<h3 id="attention-in-action">Practical Example: Attention in Action<a class="anchor" id="attention-in-action"></a></h3>
+<p>Let's consider a practical example to see attention in action. Suppose we have a sentence, and we need to predict the next word. Here's a simplified version of how the attention mechanism works:</p>
+<ol>
+<li>
+<p><strong>Generate Queries, Keys, and Values</strong>:<br />
+<code>python  
+    queries = generate_queries(input_sequence)  
+    keys = generate_keys(input_sequence)  
+    values = generate_values(input_sequence)</code></p>
+</li>
+<li>
+<p><strong>Calculate Attention Scores</strong>:<br />
+<code>python  
+    attention_scores = dot_product(queries, keys)</code></p>
+</li>
+<li>
+<p><strong>Apply Softmax to Get Attention Weights</strong>:<br />
+<code>python  
+    attention_weights = softmax(attention_scores)</code></p>
+</li>
+<li>
+<p><strong>Compute Weighted Sum of Values</strong>:<br />
+<code>python  
+    output = weighted_sum(attention_weights, values)</code></p>
+</li>
+</ol>
+<p><img alt="Attention Mechanism Steps" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1580.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=jF3HK6F7Ko8HGncVEG59fiaevgNGKQCHU3EEHE/oOfo%3D" /></p>
+<p>By understanding these steps, you will gain a deeper insight into how modern NLP models like transformers leverage attention to process and generate human-like text.</p>
+<p><img alt="Next Chapter" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1590.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=JkLp565%2BxFwV0NqHFZAQUUUxrL8mh%2BeWzgpv6fbOgIg%3D" /></p>
+<p>For a more detailed exploration of the attention mechanism and its applications in natural language processing, join me in the next chapter.  </p>
+<h3 id="upcoming-content-community-support">Upcoming Content and Community Support<a class="anchor" id="upcoming-content-community-support"></a></h3>
+<p>As I'm publishing this, <strong>a draft of the next chapter</strong> is available for review by Patreon supporters.</p>
+<p><img alt="Draft Review" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1595.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=u%2BUszcivx6xI46sEbFltvNY9GxnAmDhuksaItjuTjNk%3D" /></p>
+<p>A final version should be up in public in a week or two. It usually depends on how much I end up changing based on that review. In the meantime, if you want to dive into attention and if you want to help the channel out a little bit, it's there waiting.</p>
+<p><img alt="Review Available" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1600.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=OwrSbyEc9oeT44yrK5WvKplHhRkhnZwcBYOTUOy6qbY%3D" /></p>
+<p>For those interested in supporting the channel and gaining early access to content, consider joining the <strong>Patreon community</strong>. Here, you can:</p>
+<ul>
+<li><strong>Access Drafts</strong>: Get early access to drafts and contribute your feedback.  </li>
+<li><strong>Support the Channel</strong>: Your contributions help in producing high-quality educational content.  </li>
+<li><strong>Exclusive Content</strong>: Enjoy exclusive content and behind-the-scenes updates.</li>
+</ul>
+<p><img alt="Patreon Support" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1615.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=xOVoY95F2mNKIgeU1IhNyJxya%2B80BWlIRsDCP9yatjQ%3D" /></p>
+<h3 id="continuation-series">Continuation of the Series<a class="anchor" id="continuation-series"></a></h3>
+<p>Stay tuned for more detailed explorations into the <strong>attention mechanism</strong> and its applications. The upcoming chapters will delve deeper into:</p>
+<ul>
+<li><strong>Multi-Head Attention</strong>: Understanding how multiple attention heads work in parallel.  </li>
+<li><strong>Positional Encoding</strong>: Exploring how models handle the order of tokens in sequences.  </li>
+<li><strong>Self-Attention</strong>: Breaking down how the model attends to different positions within the same input sequence.</li>
+</ul>
+<p><img alt="Series Continuation" src="https://brainydocs.blob.core.windows.net/video-to-doc/wjZofJX0v4M/frames/1625.jpeg?se=2124-05-30T14%3A13%3A31Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=eGQVP3z%2BxErnn7sOetL6bQ61DAE3h8Z89vLf4DlKD4Q%3D" /></p>
+<p>These concepts are fundamental to understanding how <strong>transformers</strong> and other modern NLP models achieve their impressive performance. By mastering these topics, you'll be well-equipped to delve into advanced machine learning and deep learning projects.</p>
+<hr />
+<p>Remember, your feedback is invaluable, and participating in early reviews can significantly shape the content's final form. Thank you for your continued support and engagement.</p>
+<p>Understanding these processes is crucial for leveraging the power of large language models effectively. By breaking down inputs into tokens, associating them with high-dimensional vectors, and allowing these vectors to interact through attention mechanisms, Transformers achieve their impressive capabilities in understanding and generating human-like text.</p>
+<p>Stay tuned for more detailed explorations into the <strong>attention mechanism</strong> and its applications. The upcoming chapters will delve deeper into:</p>
+<ul>
+<li><strong>Multi-Head Attention</strong>: Understanding how multiple attention heads work in parallel.  </li>
+<li><strong>Positional Encoding</strong>: Exploring how models handle the order of tokens in sequences.  </li>
+<li><strong>Self-Attention</strong>: Breaking down how the model attends to different positions within the same input sequence.</li>
+</ul>
+<p>These concepts are fundamental to understanding how <strong>transformers</strong> and other modern NLP models achieve their impressive performance. By mastering these topics, you'll be well-equipped to delve into advanced machine learning and deep learning projects.</p>
+</body
