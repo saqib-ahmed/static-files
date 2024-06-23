@@ -1,0 +1,179 @@
+
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <title>"Transformers</title>
+    <style>
+        /* Apply general styles to the body */
+        body {
+            margin: 0;
+            padding: 20px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Ensure all images are responsive and fit within the container */
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px 0;
+        }
+
+        /* Apply some margin to paragraphs for readability */
+        p {
+            margin: 20px 0;
+        }
+
+        /* Ensure headers have some spacing */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        /* Style links for better visibility */
+        a {
+            color: blue;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style for pre and code elements to prevent horizontal scrolling */
+        pre {
+            white-space: pre-wrap;
+            /* Allows the content to wrap and prevents horizontal scrolling */
+            word-wrap: break-word;
+            /* Breaks long words to fit within the container */
+            background-color: #f4f4f4;
+            padding: 10px;
+            border-radius: 5px;
+            overflow: auto;
+            /* Add scrollbars only if necessary */
+        }
+
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+    </style>
+</head>
+
+<body>
+        <h1>Quantum Computing Fundamentals</h1>
+<p>As computers continually become more complex, physical limitations are beginning to inhibit increases in data speeds. Consequently, quantum computers are being developed with an alternative approach to how computers are physically designed.</p>
+<h4>Table of Contents</h4>
+<ul>
+<li><a href="#quantum-computing-fundamentals">Quantum Computing Fundamentals</a>  </li>
+<li><a href="#superposition">Superposition Explained</a>  </li>
+<li><a href="#entanglement">Entanglement Explained</a>  </li>
+<li><a href="#quantum-gates">Quantum Gates and Processing Speed</a>  </li>
+<li><a href="#quantum-teleportation">Practical Example: Quantum Teleportation</a>  </li>
+<li><a href="#conclusion">Conclusion</a></li>
+</ul>
+<h3 id="quantum-computing-fundamentals">Quantum Computing Fundamentals<a class="anchor" id="quantum-computing-fundamentals"></a></h3>
+<p>As computers continually become more complex, physical limitations are beginning to inhibit increases in data speeds. Consequently, quantum computers are being developed with an alternative approach to how computers are physically designed.</p>
+<p><img alt="Quantum Computing" src="https://brainydocs.blob.core.windows.net/video-to-doc/szWE-T1tDW0/frames/9.jpeg?se=2124-05-30T13%3A00%3A07Z&amp;sp=r&amp;sv=2023-11-03&amp;sr=b&amp;sig=A3wrt/U7uhhArcJ25ld2z3How8iA/5WqplCUImMDboU%3D" /></p>
+<p>But how do quantum computers work? There are two core concepts needed to understand quantum computers:</p>
+<ol>
+<li><strong>Superposition</strong>  </li>
+<li><strong>Entanglement</strong></li>
+</ol>
+<h3 id="superposition">Superposition Explained<a class="anchor" id="superposition"></a></h3>
+<p>In conventional computing, bits are used to represent a zero or one. However, in quantum computing, <strong>qubits</strong> are used, which can represent any range between zero and one simultaneously. This ability to exist in multiple states at once is known as <strong>superposition</strong>. It enables exponentially more information to be stored. </p>
+<p>Here’s a simple Python code example to illustrate superposition:</p>
+<pre><code class="language-python">from qiskit import QuantumCircuit, Aer, execute
+
+# Create a Quantum Circuit with one qubit  
+qc = QuantumCircuit(1)
+
+# Apply Hadamard gate to create superposition  
+qc.h(0)
+
+# Simulate the circuit  
+simulator = Aer.get_backend('statevector_simulator')  
+result = execute(qc, simulator).result()  
+statevector = result.get_statevector()
+
+print(statevector)  
+# Output: array([0.70710678+0.j, 0.70710678+0.j])  
+</code></pre>
+<p>In this example, the qubit is initialized in a superposition state where it has equal probabilities of being measured as 0 or 1.</p>
+<h3 id="entanglement">Entanglement Explained<a class="anchor" id="entanglement"></a></h3>
+<p><strong>Entanglement</strong> is a property of quantum mechanics that enables qubits to be linked regardless of distance. This means that by measuring just one qubit, you can deduce the properties of its partner. </p>
+<p>To illustrate entanglement, consider the following Python code example using Qiskit:</p>
+<pre><code class="language-python">from qiskit import QuantumCircuit, Aer, execute
+
+# Create a Quantum Circuit with two qubits  
+qc = QuantumCircuit(2)
+
+# Apply Hadamard gate to the first qubit  
+qc.h(0)
+
+# Apply CNOT gate to entangle the qubits  
+qc.cx(0, 1)
+
+# Simulate the circuit  
+simulator = Aer.get_backend('statevector_simulator')  
+result = execute(qc, simulator).result()  
+statevector = result.get_statevector()
+
+print(statevector)  
+# Output: array([0.70710678+0.j, 0.        +0.j, 0.        +0.j, 0.70710678+0.j])  
+</code></pre>
+<p>In this example, the two qubits are entangled, meaning the state of one qubit is directly related to the state of the other.</p>
+<h3 id="quantum-gates">Quantum Gates and Processing Speed<a class="anchor" id="quantum-gates"></a></h3>
+<p>Together, superposition and entanglement allow quantum gates to generate a series of zeros and ones simultaneously, significantly increasing processing speeds and calculation capabilities. </p>
+<p>Here are the steps to conceptualize how quantum gates work:</p>
+<ul>
+<li><strong>Initialize Qubits</strong>: Start by initializing qubits in a specific state.  </li>
+<li><strong>Apply Quantum Gates</strong>: Use quantum gates such as Hadamard, CNOT, and Pauli-X/Y/Z to manipulate qubits.  </li>
+<li><strong>Measure Qubits</strong>: Measure the qubits to obtain the output state.</li>
+</ul>
+<h3 id="quantum-teleportation">Practical Example: Quantum Teleportation<a class="anchor" id="quantum-teleportation"></a></h3>
+<p>One of the fascinating applications of quantum entanglement is <strong>quantum teleportation</strong>. Here’s a simplified example of how quantum teleportation can be implemented using Qiskit:</p>
+<pre><code class="language-python">from qiskit import QuantumCircuit, Aer, execute
+
+# Create a Quantum Circuit with three qubits  
+qc = QuantumCircuit(3)
+
+# Apply Hadamard gate to the first qubit  
+qc.h(0)
+
+# Apply CNOT gate to entangle the first and second qubits  
+qc.cx(0, 1)
+
+# Apply CNOT gate to the second and third qubits  
+qc.cx(1, 2)
+
+# Apply Hadamard gate to the first qubit  
+qc.h(0)
+
+# Measure the first two qubits  
+qc.measure_all()
+
+# Simulate the circuit  
+simulator = Aer.get_backend('qasm_simulator')  
+result = execute(qc, simulator, shots=1024).result()  
+counts = result.get_counts()
+
+print(counts)  
+# Output will show the distribution of measured states  
+</code></pre>
+<p>This circuit demonstrates the fundamental principles behind quantum teleportation, showcasing how qubits can be manipulated and measured to achieve data transfer without moving the physical particles.</p>
+<h3 id="conclusion">Conclusion<a class="anchor" id="conclusion"></a></h3>
+<p>The core concepts of superposition and entanglement form the backbone of quantum computing. They enable quantum computers to perform complex calculations at unprecedented speeds, promising a new era of computational power and possibilities. As we continue to explore and understand these principles, the potential applications and advancements in quantum technology are bound to revolutionize various fields.</p>
+<p>The core concepts of superposition and entanglement form the backbone of quantum computing. They enable quantum computers to perform complex calculations at unprecedented speeds, promising a new era of computational power and possibilities. As we continue to explore and understand these principles, the potential applications and advancements in quantum technology are bound to revolutionize various fields.</p>
+</body
